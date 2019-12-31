@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Hearthstone Dust Manager</string>
+
+    <string name="action_yourDecks">Your Decks</string>
+    <string name="action_tierStandardDecks">Tier Standard Decks</string>
+    <string name="action_tierWildDecks">Tier Wild Decks</string>
+
+    <string name="title_yourDecks">Your Decks</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/action_yourDecks"
+        android:orderInCategory="0"
+        android:title="@string/action_yourDecks"
+        android:icon="@drawable/ic_hammer"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_tierStandardDecks"
+        android:orderInCategory="1"
+        android:title="@string/action_tierStandardDecks"
+        android:icon="@drawable/ic_hearthstone"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_tierWildDecks"
+        android:orderInCategory="2"
+        android:title="@string/action_tierWildDecks"
+        android:icon="@drawable/infinite"
+        app:showAsAction="ifRoom" />
+
+</menu>
