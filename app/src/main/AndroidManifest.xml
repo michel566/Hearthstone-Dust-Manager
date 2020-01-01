@@ -20,5 +20,9 @@
         </activity>
         <activity android:name=".ui.activity.BaseActivity" />
         <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.TierStandardDecksActivity" />
+        <activity android:name=".ui.activity.TierWildDecksActivity" />
+        <activity android:name=".ui.activity.DeckBuilderActitvity" />
+        <activity android:name=".ui.activity.CreateDeckActivity" />
     </application>
 </manifest>

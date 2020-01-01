@@ -4,6 +4,25 @@
     <string name="action_yourDecks">Your Decks</string>
     <string name="action_tierStandardDecks">Tier Standard Decks</string>
     <string name="action_tierWildDecks">Tier Wild Decks</string>
+    <string name="action_config">Configurations</string>
 
     <string name="title_yourDecks">Your Decks</string>
+    <string name="title_tierStandardDecks">Tier Standard Decks</string>
+    <string name="title_tierWildDecks">Tier Wild Decks</string>
+    <string name="title_deckBuilder">Deck Builder</string>
+    <string name="title_createDeck">New Deck</string>
+
+    <string name="bt_yourdecks_importDeck">Import your deck code here</string>
+    <string name="bt_yourdecks_createDeck">Create a new deck</string>
+
+    <string name="tv_yourdecks_or">or</string>
+    <string name="tv_createdeck_name">Name</string>
+    <string name="tv_createdeck_class">Class</string>
+    <string name="tv_createdeck_stereotype">Stereotype</string>
+
+    <string name="ed_createdeck_name">Name of your deck</string>
+
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="bt_createdeck_create">Create deck</string>
+    <string name="ed_deckbuilder_findByName">find your card by name</string>
 </resources>
