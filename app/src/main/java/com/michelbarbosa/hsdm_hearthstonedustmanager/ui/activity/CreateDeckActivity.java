@@ -6,19 +6,19 @@ import android.widget.Button;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 
-public class YourDecksActivity extends MainActivity {
+public class CreateDeckActivity extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setLayoutContent(R.layout.activity_yourdecks);
-        setToolbarTitle(R.string.title_yourDecks);
+        setLayoutContent(R.layout.activity_createdeck);
+        setToolbarTitle(R.string.title_createDeck);
 
-        Button btCreateDeck = findViewById(R.id.bt_yourdecks_createDeck);
+        Button btCreateDeck = findViewById(R.id.bt_createdeck_create);
         btCreateDeck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gotoCreateDeckActivity(YourDecksActivity.this);
+                gotoDeckBuilderActivity(CreateDeckActivity.this);
             }
         });
 
