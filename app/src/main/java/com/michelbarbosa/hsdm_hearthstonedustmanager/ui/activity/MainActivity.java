@@ -2,7 +2,6 @@ package com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -20,13 +19,13 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_yourDecks:
-                Toast.makeText(this, "your decks", Toast.LENGTH_SHORT).show();
+                gotoYourDecksActivity(this);
                 return true;
             case R.id.action_tierStandardDecks:
-                Toast.makeText(this, "tier standart decks", Toast.LENGTH_SHORT).show();
+                gotoTierStandardDecksActivity(this);
                 return true;
             case R.id.action_tierWildDecks:
-                Toast.makeText(this, "tier wild decks", Toast.LENGTH_SHORT).show();
+                gotoTierWildDecksActivity(this);
                 return true;
             default:
                 super.onOptionsItemSelected(item);

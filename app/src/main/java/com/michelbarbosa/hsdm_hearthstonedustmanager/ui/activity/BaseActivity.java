@@ -1,6 +1,7 @@
 package com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -115,6 +116,38 @@ public class BaseActivity extends AppCompatActivity implements DefaultSettingsAc
         if (context != null) {
             finishAffinity();
         }
+    }
+
+    //Navegability methods
+
+    protected void gotoYourDecksActivity(Context context){
+        Intent it = new Intent(context, YourDecksActivity.class);
+        gotoActivity(it, context);
+    }
+
+    protected void gotoTierStandardDecksActivity(Context context){
+        Intent it = new Intent(context, TierStandardDecksActivity.class);
+        gotoActivity(it, context);
+    }
+
+    protected void gotoTierWildDecksActivity(Context context){
+        Intent it = new Intent(context, TierWildDecksActivity.class);
+        gotoActivity(it, context);
+    }
+
+    protected void gotoCreateDeckActivity(Context context){
+        Intent it = new Intent(context, CreateDeckActivity.class);
+        gotoActivity(it, context);
+    }
+
+    protected void gotoDeckBuilderActivity(Context context){
+        Intent it = new Intent(context, DeckBuilderActitvity.class);
+        gotoActivity(it, context);
+    }
+
+    private void gotoActivity(Intent intent, Context context) {
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        context.startActivity(intent);
     }
 
 
