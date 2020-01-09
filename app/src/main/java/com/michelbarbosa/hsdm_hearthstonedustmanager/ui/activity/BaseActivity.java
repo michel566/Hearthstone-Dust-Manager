@@ -2,6 +2,7 @@ package com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 
@@ -27,10 +31,19 @@ public class BaseActivity extends AppCompatActivity implements DefaultSettingsAc
 
     protected Toolbar toolbar;
 
+    public SharedPreferences sharedPreferences;
+    public SharedPreferences.Editor editorSharedPref;
+    public static final String STEREOTYPE_PREF = "stereotype_preferences";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+    }
+
+    protected void setSharedPreferences(){
+        sharedPreferences = getSharedPreferences(STEREOTYPE_PREF, 0);
+        editorSharedPref = sharedPreferences.edit();
     }
 
     @Override
@@ -57,6 +70,19 @@ public class BaseActivity extends AppCompatActivity implements DefaultSettingsAc
                 titleToolbar.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
             }
         }
+    }
+
+    void managerFragmentTransaction(int idContainer, Fragment fragment) {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.findFragmentById(idContainer);
+        FragmentTransaction transaction = manager.beginTransaction();
+        if (transaction.isEmpty()) {
+            transaction.add(idContainer, fragment);
+        } else {
+            transaction.replace(idContainer, fragment);
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
     }
 
     public void setArrowBackPressed() {
@@ -112,6 +138,10 @@ public class BaseActivity extends AppCompatActivity implements DefaultSettingsAc
         return super.dispatchTouchEvent(ev);
     }
 
+    protected void clearData() {
+        sharedPreferences.getAll().clear();
+    }
+
     protected void destroyApplication(Context context) {
         if (context != null) {
             finishAffinity();
@@ -120,28 +150,33 @@ public class BaseActivity extends AppCompatActivity implements DefaultSettingsAc
 
     //Navegability methods
 
-    protected void gotoYourDecksActivity(Context context){
+    protected void gotoYourDecksActivity(Context context) {
         Intent it = new Intent(context, YourDecksActivity.class);
         gotoActivity(it, context);
     }
 
-    protected void gotoTierStandardDecksActivity(Context context){
+    protected void gotoTierStandardDecksActivity(Context context) {
         Intent it = new Intent(context, TierStandardDecksActivity.class);
         gotoActivity(it, context);
     }
 
-    protected void gotoTierWildDecksActivity(Context context){
+    protected void gotoTierWildDecksActivity(Context context) {
         Intent it = new Intent(context, TierWildDecksActivity.class);
         gotoActivity(it, context);
     }
 
-    protected void gotoCreateDeckActivity(Context context){
+    protected void gotoCreateDeckActivity(Context context) {
         Intent it = new Intent(context, CreateDeckActivity.class);
         gotoActivity(it, context);
     }
 
-    protected void gotoDeckBuilderActivity(Context context){
+    protected void gotoDeckBuilderActivity(Context context) {
         Intent it = new Intent(context, DeckBuilderActitvity.class);
+        gotoActivity(it, context);
+    }
+
+    protected void gotoSettingsActivity(Context context) {
+        Intent it = new Intent(context, SettingsActivity.class);
         gotoActivity(it, context);
     }
 

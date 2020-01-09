@@ -27,6 +27,9 @@ public class MainActivity extends BaseActivity {
             case R.id.action_tierWildDecks:
                 gotoTierWildDecksActivity(this);
                 return true;
+            case R.id.action_settings:
+                gotoSettingsActivity(this);
+                return true;
             default:
                 super.onOptionsItemSelected(item);
         }

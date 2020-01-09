@@ -5,24 +5,31 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/action_yourDecks"
-        android:orderInCategory="0"
-        android:title="@string/action_yourDecks"
-        android:icon="@drawable/ic_hammer"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/action_tierStandardDecks"
-        android:orderInCategory="1"
+        android:orderInCategory="0"
         android:title="@string/action_tierStandardDecks"
         android:icon="@drawable/ic_hearthstone"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_tierWildDecks"
-        android:orderInCategory="2"
+        android:orderInCategory="1"
         android:title="@string/action_tierWildDecks"
         android:icon="@drawable/infinite"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_yourDecks"
+        android:orderInCategory="2"
+        android:title="@string/action_yourDecks"
+        android:icon="@drawable/ic_hammer"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="3"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_settings"
         app:showAsAction="ifRoom" />
 
 </menu>

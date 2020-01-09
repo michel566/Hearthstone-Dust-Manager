@@ -4,16 +4,28 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.Build;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 
 public class UIUtil {
+
+    public static void setToCardLayout(Context context, View view, int resourceDrawable, int supportResourceDrawable) {
+        if (Util.checkMinimalAPI(Build.VERSION_CODES.LOLLIPOP)) {
+            view.setBackground(context.getResources().getDrawable(resourceDrawable));
+            view.setElevation(context.getResources().getDimension(R.dimen.elevation_widget_default));
+        } else {
+            view.setBackground(context.getResources().getDrawable(supportResourceDrawable));
+        }
+    }
 
     public static AlertDialog progressDialog(Context context, String message) {
         int llPadding = 30;
@@ -60,12 +72,12 @@ public class UIUtil {
         return dialog;
     }
 
-    public static void selectionOptionList(final Context context, String title,
-                                           DialogInterface.OnClickListener onClick, final String... options){
+    public static AlertDialog.Builder selectionOptionList(final Context context, String title,
+                                                          DialogInterface.OnClickListener onClick, final String... options) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);
         builder.setItems(options, onClick);
-        builder.show();
+        return builder;
     }
 
 }

@@ -11,4 +11,9 @@
     <color name="colorTextLight">#787878</color>
     <color name="colorButton">#e8e8e8</color>
     <color name="colorButtonPressed">#cdcdcd</color>
+
+    <color name="colorBackgroundDark">#333333</color>
+    <color name="colorTextDark">#FFFFFF</color>
+    <color name="colorAccentDark">#29D6E6</color>
+
 </resources>

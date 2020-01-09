@@ -49,11 +49,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_createdeck_name" />
 
-    <Spinner
-        android:id="@+id/spPopup_createdeck_class"
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/popup_createdeck_class"
         style="@style/AppTheme.Spinner"
         android:layout_width="0dp"
         android:layout_height="@dimen/widgetDefaultForm"
+        android:entries="@array/array_classes"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
@@ -65,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPopup_createdeck_class" />
 
     <TextView
-        android:id="@+id/tvPopup_createdeck_stereotype"
+        android:id="@+id/popup_createdeck_stereotype"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -77,13 +78,14 @@
         android:textSize="@dimen/textSubtitleSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spPopup_createdeck_class" />
+        app:layout_constraintTop_toBottomOf="@+id/popup_createdeck_class" />
 
-    <Spinner
+    <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spPopup_createdeck_stereotype"
         style="@style/AppTheme.Spinner"
         android:layout_width="0dp"
         android:layout_height="@dimen/widgetDefaultForm"
+        android:entries="@array/array_stereotype"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
@@ -92,7 +94,7 @@
         android:elevation="@dimen/elevation_widget_default"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPopup_createdeck_stereotype" />
+        app:layout_constraintTop_toBottomOf="@+id/popup_createdeck_stereotype" />
 
     <Button
         android:id="@+id/bt_createdeck_create"

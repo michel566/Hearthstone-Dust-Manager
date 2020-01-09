@@ -21,7 +21,7 @@
 
     <style name="AppTheme.Spinner" parent="Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:textColor">@color/colorText</item>
-        <item name="android:background">@drawable/spinner_unpressed</item>
+        <item name="android:background">@drawable/spinner</item>
         <item name="android:clickable">true</item>
     </style>
 

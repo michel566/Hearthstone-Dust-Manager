@@ -24,5 +24,6 @@
         <activity android:name=".ui.activity.TierWildDecksActivity" />
         <activity android:name=".ui.activity.DeckBuilderActitvity" />
         <activity android:name=".ui.activity.CreateDeckActivity" />
+        <activity android:name=".ui.activity.SettingsActivity" />
     </application>
 </manifest>
