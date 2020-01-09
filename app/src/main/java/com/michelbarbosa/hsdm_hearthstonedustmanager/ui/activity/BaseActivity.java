@@ -27,7 +27,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 
 
-public class BaseActivity extends AppCompatActivity implements DefaultSettingsActivity {
+public class BaseActivity extends AppCompatActivity{
 
     protected Toolbar toolbar;
 
@@ -46,7 +46,6 @@ public class BaseActivity extends AppCompatActivity implements DefaultSettingsAc
         editorSharedPref = sharedPreferences.edit();
     }
 
-    @Override
     public void setToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -108,7 +107,7 @@ public class BaseActivity extends AppCompatActivity implements DefaultSettingsAc
         toolbar.setOverflowIcon(icon);
     }
 
-    @Override
+
     public void setLayoutContent(int resourceContentView) {
         RelativeLayout dinamicContent = findViewById(R.id.content);
         View view = getLayoutInflater().inflate(resourceContentView, dinamicContent, false);

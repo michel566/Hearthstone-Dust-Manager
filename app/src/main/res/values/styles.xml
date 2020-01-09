@@ -26,7 +26,14 @@
     </style>
 
     <style name="AppTheme.FindEditText">
-        <item name="android:background">@drawable/find_edittext</item>
+        <item name="android:background">@drawable/edit_text</item>
+        <item name="android:textColor">@color/colorTextLight</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:drawableEnd">@drawable/ic_search</item>
+    </style>
+
+    <style name="AppTheme.EditText">
+        <item name="android:background">@drawable/edit_text</item>
         <item name="android:textColor">@color/colorTextLight</item>
         <item name="android:padding">12dp</item>
     </style>
