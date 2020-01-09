@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_classes">
+        <item>Neutral</item>
+        <item>Paladin</item>
+        <item>Druid</item>
+        <item>Hunter</item>
+        <item>Mage</item>
+        <item>Warrior</item>
+        <item>Priest</item>
+        <item>Warlock</item>
+        <item>Shaman</item>
+        <item>Rogue</item>
+    </string-array>
+
+    <string-array name="array_stereotype">
+        <item>Aggro</item>
+        <item>Midrange</item>
+        <item>Control</item>
+        <item>Tempo</item>
+    </string-array>
+
+</resources>
