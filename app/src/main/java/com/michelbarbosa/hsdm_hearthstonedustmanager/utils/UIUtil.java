@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -78,6 +79,10 @@ public class UIUtil {
         builder.setTitle(title);
         builder.setItems(options, onClick);
         return builder;
+    }
+
+    public static void setSideNavigationOptionsSelected(MenuItem... itens){
+
     }
 
 }

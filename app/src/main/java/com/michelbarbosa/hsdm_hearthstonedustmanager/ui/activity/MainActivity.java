@@ -10,8 +10,6 @@ import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private BottomNavigationView bottomNavigation;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +18,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     }
 
     private void setBottomNavigationView() {
-        bottomNavigation = findViewById(R.id.navigationView);
+        BottomNavigationView bottomNavigation = findViewById(R.id.navigationView);
         bottomNavigation.setOnNavigationItemSelectedListener(this);
     }
 
@@ -52,4 +50,5 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

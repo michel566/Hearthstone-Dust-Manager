@@ -22,12 +22,13 @@
     <string name="tv_createdeck_stereotype">Stereotype</string>
     <string name="tv_settings_version">Version:</string>
     <string name="tv_settings_versionNumber">Number of version is put here</string>
-    <string name="tv_settings_stereotypeCreate">Create a stereotype</string>
 
     <string name="ed_createdeck_name">Name of your deck</string>
 
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bt_createdeck_create">Create deck</string>
+
     <string name="ed_deckbuilder_findByName">find your card by name</string>
+    <string name="ed_settings_stereotypeCreate">Create a stereotype</string>
 
 </resources>
