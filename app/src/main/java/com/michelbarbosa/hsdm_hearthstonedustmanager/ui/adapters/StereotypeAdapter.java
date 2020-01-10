@@ -10,13 +10,14 @@ import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.interfaces.StereotypeRecyclerClickListener;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.viewholders.StereotypeHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StereotypeAdapter extends RecyclerView.Adapter<StereotypeHolder> {
 
     private final LayoutInflater layoutInflater;
     private final StereotypeRecyclerClickListener listener;
-    public List<String> stereotypeList;
+    private List<String> stereotypeList;
 
     public StereotypeAdapter(LayoutInflater layoutInflater,
                              StereotypeRecyclerClickListener listener, List<String> stereotypeList) {
@@ -51,4 +52,9 @@ public class StereotypeAdapter extends RecyclerView.Adapter<StereotypeHolder> {
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, stereotypeList.size());
     }
+
+    public ArrayList<String> getList(){
+        return (ArrayList<String>) stereotypeList;
+    }
+
 }

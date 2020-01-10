@@ -29,6 +29,7 @@
         android:id="@+id/navigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:textAlignment="center"
         android:gravity="start"
         app:itemIconTint="@color/colorText"
