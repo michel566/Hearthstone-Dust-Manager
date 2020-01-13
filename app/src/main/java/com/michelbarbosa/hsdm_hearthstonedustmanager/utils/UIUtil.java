@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -11,11 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
+
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.components.CustomDialog;
 
 public class UIUtil {
 
@@ -25,6 +33,32 @@ public class UIUtil {
             view.setElevation(context.getResources().getDimension(R.dimen.elevation_widget_default));
         } else {
             view.setBackground(context.getResources().getDrawable(supportResourceDrawable));
+        }
+    }
+
+    public static void showDialogOption(CustomDialog customDialog,
+                                        String textEscapeButton, View.OnClickListener escapeButtonOption,
+                                        String textConfirmButton, View.OnClickListener confirmButtonOption) {
+        if (escapeButtonOption != null) {
+            customDialog.onOptionEscapeClickListener(escapeButtonOption, textEscapeButton);
+        }
+        if (confirmButtonOption != null) {
+            customDialog.onOptionConfirmClickListener(confirmButtonOption, textConfirmButton);
+        }
+    }
+
+
+    public static void iconFillColor(Context context, ImageView imageView, int resourceDrawable, int resourceTargetColor) {
+        if (Util.checkMinimalAPI(Build.VERSION_CODES.LOLLIPOP)) {
+            Drawable drawable = VectorDrawableCompat.create(context.getResources(),
+                    resourceDrawable, context.getTheme());
+            if (drawable != null) {
+                PorterDuffColorFilter porterDuffColorFilter = new PorterDuffColorFilter(
+                        ContextCompat.getColor(context, resourceTargetColor), PorterDuff.Mode.SRC_ATOP);
+
+                drawable.setColorFilter(porterDuffColorFilter);
+                imageView.setImageDrawable(drawable);
+            }
         }
     }
 
@@ -81,7 +115,7 @@ public class UIUtil {
         return builder;
     }
 
-    public static void setSideNavigationOptionsSelected(MenuItem... itens){
+    public static void setSideNavigationOptionsSelected(MenuItem... itens) {
 
     }
 

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.interfaces.StereotypeRecyclerClickListener;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.utils.UIUtil;
 
 public class StereotypeHolder extends RecyclerView.ViewHolder {
 
@@ -22,6 +23,7 @@ public class StereotypeHolder extends RecyclerView.ViewHolder {
         this.viewHolderListener = viewHolderListener;
         this.tvStereotype = itemView.findViewById(R.id.tv_cardStereotype_name);
         this.imRemoveStereotype = itemView.findViewById(R.id.im_cardStereotype_remove);
+        UIUtil.iconFillColor(itemView.getContext(), imRemoveStereotype, R.drawable.ic_cancel, R.color.colorPrimary);
 
         imRemoveStereotype.setOnClickListener(new View.OnClickListener() {
             @Override
