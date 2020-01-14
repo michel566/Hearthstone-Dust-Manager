@@ -18,12 +18,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.components.CustomDialog;
+
+import java.util.List;
 
 public class UIUtil {
 
@@ -117,6 +120,23 @@ public class UIUtil {
 
     public static void setSideNavigationOptionsSelected(MenuItem... itens) {
 
+    }
+
+    public static void showToastListChanged(Context context, List<String> listAdapter, String flag){
+        StringBuilder text = new StringBuilder();
+        text.append(flag).append("\n");
+        int i = 0;
+        String brokeLine = "\n - ";
+        for (String element: listAdapter) {
+            if(i != 0){
+                text.append(brokeLine).append(i).append(":").append(element);
+            } else {
+                text.append(" - ").append(i).append(":").append(element);
+            }
+            i++;
+        }
+
+        Toast.makeText(context, text , Toast.LENGTH_SHORT).show();
     }
 
 }
