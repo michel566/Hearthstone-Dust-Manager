@@ -80,10 +80,10 @@ public class SettingsActivity extends MainActivity {
                 String stereotype = edCreateStereotype.getText().toString();
                 if (!TextUtils.isEmpty(stereotype)) {
                     edCreateStereotype.clearComposingText();
+                    stereotypeCount = stereotypeAdapter.getList().size();
                     stereotypeAdapter.addStereotype(stereotype);
                     SharedPreferencesUtil.setStringToSharedPreferences(editorSharedPref,
                             STEREOTYPE_KEY, stereotypeCount, stereotype);
-                    stereotypeCount++;
                 }
             }
         });
@@ -101,6 +101,7 @@ public class SettingsActivity extends MainActivity {
                             public void onClick(View v) {
                                 dialog.dismiss();
                                 clearAllPreferences();
+                                restoreAllPreferences();
                             }
                         }, getResources().getString(R.string.dialog_bt_no),
                         new View.OnClickListener() {
@@ -116,24 +117,38 @@ public class SettingsActivity extends MainActivity {
     private void setCreateStereotypeList() {
         setSharedPreferences();
         stereotypeList = new ArrayList<>();
-        stereotypeList = SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, stereotypeCount);
+        stereotypeList = SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0);
 
         if (stereotypeList.size() > 0) {
             stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), listener, stereotypeList);
         } else {
-            stereotypeCount = defaultStereotypeList.length;
-            SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, 0,
-                    new ArrayList<>(Arrays.asList(defaultStereotypeList)));
-            stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), listener,
-                    SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, stereotypeCount));
+            setDefaultStereotypeList();
         }
         recyclerView.setAdapter(stereotypeAdapter);
+    }
+
+    private void setDefaultStereotypeList() {
+        stereotypeCount = defaultStereotypeList.length;
+        SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, 0,
+                new ArrayList<>(Arrays.asList(defaultStereotypeList)));
+        stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), listener,
+                SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, stereotypeCount));
     }
 
     private void clearAllPreferences() {
         stereotypeAdapter.removeAllStereotypes();
         SharedPreferencesUtil.clearPreferences(sharedPreferences, editorSharedPref, STEREOTYPE_KEY);
         getSavedStateRegistry().unregisterSavedStateProvider(STATE_LIST);
+    }
+
+    private void restoreAllPreferences() {
+        restoreStereotypeListPref();
+    }
+
+    private void restoreStereotypeListPref(){
+        SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, 0,
+                new ArrayList<>(Arrays.asList(defaultStereotypeList)));
+        stereotypeAdapter.setList(new ArrayList<>(Arrays.asList(defaultStereotypeList)));
     }
 
 }

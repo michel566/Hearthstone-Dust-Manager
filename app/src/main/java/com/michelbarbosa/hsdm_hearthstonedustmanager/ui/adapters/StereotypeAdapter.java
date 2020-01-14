@@ -57,6 +57,11 @@ public class StereotypeAdapter extends RecyclerView.Adapter<StereotypeHolder> {
         return (ArrayList<String>) stereotypeList;
     }
 
+    public void setList(List<String> stereotypeList){
+        this.stereotypeList = stereotypeList;
+        notifyDataSetChanged();
+    }
+
     public void removeAllStereotypes(){
         stereotypeList.clear();
         notifyDataSetChanged();
