@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Hearthstone Dust Manager</string>
 
+    <string name="dialog_bt_yes">Sure</string>
+    <string name="dialog_bt_no">No</string>
+
     <string name="action_yourDecks">Your Decks</string>
     <string name="action_tierStandardDecks">Standard Decks</string>
     <string name="action_tierWildDecks">Wild Decks</string>
@@ -22,6 +25,9 @@
     <string name="tv_createdeck_stereotype">Stereotype</string>
     <string name="tv_settings_version">Version:</string>
     <string name="tv_settings_versionNumber">Number of version is put here</string>
+    <string name="tv_settings_clearPreferences">Clear app preferences</string>
+
+    <string name="msg_clearPreferences">Do you want clear all your settings preferences?</string>
 
     <string name="ed_createdeck_name">Name of your deck</string>
 

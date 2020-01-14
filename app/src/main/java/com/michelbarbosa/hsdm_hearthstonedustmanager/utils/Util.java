@@ -8,5 +8,4 @@ public class Util {
         return Build.VERSION.SDK_INT >= buildVersionCode;
     }
 
-
 }

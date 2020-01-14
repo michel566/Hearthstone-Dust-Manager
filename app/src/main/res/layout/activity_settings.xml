@@ -26,7 +26,7 @@
                android:textSize="@dimen/textSubtitleSize" />
 
            <TextView
-               android:id="@+id/tv_VersionInfo"
+               android:id="@+id/tv_settings_VersionInfo"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_marginStart="@dimen/marginSizeSmall"
@@ -39,7 +39,7 @@
        <View
            android:layout_width="wrap_content"
            android:layout_height="2dp"
-           android:background="@color/colorAccent" />
+           android:background="@color/colorPrimary" />
 
        <androidx.constraintlayout.widget.ConstraintLayout
            android:layout_width="match_parent"
@@ -78,7 +78,7 @@
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/rView_cardStereotype"
                android:layout_width="0dp"
-               android:layout_height="300dp"
+               android:layout_height="wrap_content"
                android:layout_marginStart="8dp"
                android:layout_marginLeft="8dp"
                android:layout_marginTop="8dp"
@@ -93,7 +93,30 @@
        <View
            android:layout_width="wrap_content"
            android:layout_height="2dp"
-           android:background="@color/colorAccent" />
+           android:background="@color/colorPrimary" />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="@dimen/marginSizeDefault"
+           android:layout_marginBottom="@dimen/marginSizeDefault"
+           android:orientation="vertical">
+
+           <TextView
+               android:id="@+id/tv_settings_clearPreferences"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="@dimen/marginSizeSmall"
+               android:layout_marginLeft="@dimen/marginSizeSmall"
+               android:text="@string/tv_settings_clearPreferences"
+               android:textSize="@dimen/textSubtitleSize" />
+
+       </LinearLayout>
+
+       <View
+           android:layout_width="wrap_content"
+           android:layout_height="2dp"
+           android:background="@color/colorPrimary" />
 
    </LinearLayout>
 
