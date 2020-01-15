@@ -38,7 +38,9 @@ public class SettingsActivity extends MainActivity {
         @Override
         public void onClick(View v, int position) {
             stereotypeAdapter.removeStereotype(position);
-            SharedPreferencesUtil.removeStringToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, position);
+            stereotypeList = stereotypeAdapter.getList();
+            SharedPreferencesUtil.removeStringToSharedPreferences(editorSharedPref, sharedPreferences,
+                    STEREOTYPE_KEY, position, stereotypeList.size());
             restoreStereotypeListPref(stereotypeList);
         }
     };
@@ -76,14 +78,6 @@ public class SettingsActivity extends MainActivity {
         TextView tvVersionInfo = findViewById(R.id.tv_settings_VersionInfo);
 
         tvVersionInfo.setText(BuildConfig.VERSION_NAME);
-
-        //todo : remover apos teste
-        tvVersionInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                testarSaidaPreferences(SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0));
-            }
-        });
 
         recyclerView = findViewById(R.id.rView_cardStereotype);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -164,16 +158,5 @@ public class SettingsActivity extends MainActivity {
         SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, 0, stereotypeList);
         stereotypeAdapter.setList(stereotypeList);
     }
-
-    //todo: remover apos teste
-    private void testarSaidaAdapter(List<String> listAdapter) {
-        UIUtil.showToastListChanged(SettingsActivity.this, listAdapter, "ADAPTER");
-    }
-
-    //todo: remover apos teste
-    private void testarSaidaPreferences(List<String> listPreferences) {
-        UIUtil.showToastListChanged(SettingsActivity.this, listPreferences, "PREFERENCES");
-    }
-
 
 }
