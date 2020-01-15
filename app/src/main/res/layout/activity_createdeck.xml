@@ -91,7 +91,6 @@
             style="@style/AppTheme.Spinner"
             android:layout_width="0dp"
             android:layout_height="@dimen/widgetDefaultForm"
-            android:entries="@array/array_stereotype"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"

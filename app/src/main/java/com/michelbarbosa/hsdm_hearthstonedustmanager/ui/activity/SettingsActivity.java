@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.michelbarbosa.hsdm_hearthstonedustmanager.BuildConfig;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.enums.DialogType;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.adapters.StereotypeAdapter;
@@ -26,10 +27,10 @@ import java.util.List;
 public class SettingsActivity extends MainActivity {
 
     private StereotypeAdapter stereotypeAdapter;
-    private static final String[] defaultStereotypeList = {"Aggro", "Midrange", "Control", "Tempo"};
+    private static String[] defaultStereotypeList;
     private RecyclerView recyclerView;
     private static final String STATE_LIST = "state_list";
-    private static final String STEREOTYPE_KEY = "stereotype_key";
+    static final String STEREOTYPE_KEY = "stereotype_key";
     private List<String> stereotypeList;
     private static int stereotypeCount = 0;
 
@@ -38,6 +39,7 @@ public class SettingsActivity extends MainActivity {
         public void onClick(View v, int position) {
             stereotypeAdapter.removeStereotype(position);
             SharedPreferencesUtil.removeStringToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, position);
+            restoreStereotypeListPref(stereotypeList);
         }
     };
 
@@ -47,6 +49,7 @@ public class SettingsActivity extends MainActivity {
         setLayoutContent(R.layout.activity_settings);
         setToolbarTitle(R.string.title_settings);
         setViews();
+        defaultStereotypeList = getResources().getStringArray(R.array.array_stereotype);
 
         if (savedInstanceState != null) {
             stereotypeList = savedInstanceState.getStringArrayList(STATE_LIST);
@@ -70,6 +73,18 @@ public class SettingsActivity extends MainActivity {
         final EditText edCreateStereotype = findViewById(R.id.ed_settings_stereotypeCreate);
         ImageView ivAddStereotype = findViewById(R.id.im_settings_stereotypeAdd);
         TextView tvClearPreferences = findViewById(R.id.tv_settings_clearPreferences);
+        TextView tvVersionInfo = findViewById(R.id.tv_settings_VersionInfo);
+
+        tvVersionInfo.setText(BuildConfig.VERSION_NAME);
+
+        //todo : remover apos teste
+        tvVersionInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testarSaidaPreferences(SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0));
+            }
+        });
+
         recyclerView = findViewById(R.id.rView_cardStereotype);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -132,7 +147,7 @@ public class SettingsActivity extends MainActivity {
         SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, 0,
                 new ArrayList<>(Arrays.asList(defaultStereotypeList)));
         stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), listener,
-                SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, stereotypeCount));
+                SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0));
     }
 
     private void clearAllPreferences() {
@@ -142,13 +157,23 @@ public class SettingsActivity extends MainActivity {
     }
 
     private void restoreAllPreferences() {
-        restoreStereotypeListPref();
+        restoreStereotypeListPref(new ArrayList<>(Arrays.asList(defaultStereotypeList)));
     }
 
-    private void restoreStereotypeListPref(){
-        SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, 0,
-                new ArrayList<>(Arrays.asList(defaultStereotypeList)));
-        stereotypeAdapter.setList(new ArrayList<>(Arrays.asList(defaultStereotypeList)));
+    private void restoreStereotypeListPref(List<String> stereotypeList) {
+        SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, 0, stereotypeList);
+        stereotypeAdapter.setList(stereotypeList);
     }
+
+    //todo: remover apos teste
+    private void testarSaidaAdapter(List<String> listAdapter) {
+        UIUtil.showToastListChanged(SettingsActivity.this, listAdapter, "ADAPTER");
+    }
+
+    //todo: remover apos teste
+    private void testarSaidaPreferences(List<String> listPreferences) {
+        UIUtil.showToastListChanged(SettingsActivity.this, listPreferences, "PREFERENCES");
+    }
+
 
 }

@@ -48,8 +48,13 @@ public class SharedPreferencesUtil {
         }
     }
 
-    public static void removeStringToSharedPreferences(SharedPreferences.Editor editor, final String key, int positionItemRemoved) {
+    public static void removeStringToSharedPreferences(SharedPreferences.Editor editor, SharedPreferences preferenceToUpdate,
+                                                       final String key, int positionItemRemoved, int positionLastItemList) {
         editor.remove(key + INDICATOR + positionItemRemoved);
+        if (preferenceToUpdate.contains(key + INDICATOR + 0)){
+        editor.remove(key + INDICATOR + positionLastItemList);
+        }
+
         editor.commit();
     }
 
