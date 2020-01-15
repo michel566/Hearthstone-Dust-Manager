@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">Hearthstone Dust Manager</string>
 
+    <string name="dialog_bt_yes">Sure</string>
+    <string name="dialog_bt_no">No</string>
+
     <string name="action_yourDecks">Your Decks</string>
-    <string name="action_tierStandardDecks">Tier Standard Decks</string>
-    <string name="action_tierWildDecks">Tier Wild Decks</string>
-    <string name="action_config">Configurations</string>
+    <string name="action_tierStandardDecks">Standard Decks</string>
+    <string name="action_tierWildDecks">Wild Decks</string>
+    <string name="action_settings">Settings</string>
 
     <string name="title_yourDecks">Your Decks</string>
+    <string name="title_settings">Settings</string>
     <string name="title_tierStandardDecks">Tier Standard Decks</string>
     <string name="title_tierWildDecks">Tier Wild Decks</string>
     <string name="title_deckBuilder">Deck Builder</string>
@@ -19,10 +23,18 @@
     <string name="tv_createdeck_name">Name</string>
     <string name="tv_createdeck_class">Class</string>
     <string name="tv_createdeck_stereotype">Stereotype</string>
+    <string name="tv_settings_version">Version:</string>
+    <string name="tv_settings_versionNumber">Number of version is put here</string>
+    <string name="tv_settings_clearPreferences">Restore default preferences</string>
+
+    <string name="msg_clearPreferences">Do you want restore all your settings preferences?</string>
 
     <string name="ed_createdeck_name">Name of your deck</string>
 
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bt_createdeck_create">Create deck</string>
+
     <string name="ed_deckbuilder_findByName">find your card by name</string>
+    <string name="ed_settings_stereotypeCreate">Create a stereotype</string>
+
 </resources>

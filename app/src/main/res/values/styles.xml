@@ -21,12 +21,19 @@
 
     <style name="AppTheme.Spinner" parent="Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:textColor">@color/colorText</item>
-        <item name="android:background">@drawable/spinner_unpressed</item>
+        <item name="android:background">@drawable/spinner</item>
         <item name="android:clickable">true</item>
     </style>
 
     <style name="AppTheme.FindEditText">
-        <item name="android:background">@drawable/find_edittext</item>
+        <item name="android:background">@drawable/edit_text</item>
+        <item name="android:textColor">@color/colorTextLight</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:drawableEnd">@drawable/ic_search</item>
+    </style>
+
+    <style name="AppTheme.EditText">
+        <item name="android:background">@drawable/edit_text</item>
         <item name="android:textColor">@color/colorTextLight</item>
         <item name="android:padding">12dp</item>
     </style>

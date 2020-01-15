@@ -7,4 +7,13 @@
     <dimen name="widgetDefaultForm">50dp</dimen>
     <dimen name="elevation_widget_default">2dp</dimen>
 
+    <dimen name="marginSizeBig">32dp</dimen>
+    <dimen name="marginSizeDefault">16dp</dimen>
+    <dimen name="marginSizeSmall">8dp</dimen>
+    <dimen name="marginCard">4dp</dimen>
+
+    <dimen name="iconSizeDefaultSmall">20dp</dimen>
+    <dimen name="iconSizeDefault">30dp</dimen>
+    <dimen name="iconSizeDefaultBig">50dp</dimen>
+
 </resources>

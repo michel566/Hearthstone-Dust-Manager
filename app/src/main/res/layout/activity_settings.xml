@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="@dimen/marginSizeDefault"
+           android:layout_marginBottom="@dimen/marginSizeDefault"
+           android:orientation="vertical">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="@dimen/marginSizeSmall"
+               android:layout_marginLeft="@dimen/marginSizeSmall"
+               android:text="@string/tv_settings_version"
+               android:textSize="@dimen/textSubtitleSize" />
+
+           <TextView
+               android:id="@+id/tv_settings_VersionInfo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="@dimen/marginSizeSmall"
+               android:layout_marginLeft="@dimen/marginSizeSmall"
+               android:text="@string/tv_settings_versionNumber"
+               android:textSize="@dimen/textSizeDefault" />
+
+       </LinearLayout>
+
+       <View
+           android:layout_width="wrap_content"
+           android:layout_height="2dp"
+           android:background="@color/colorPrimary" />
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="@dimen/marginSizeDefault"
+           android:layout_marginBottom="@dimen/marginSizeDefault"
+           android:orientation="vertical">
+
+           <EditText
+               android:id="@+id/ed_settings_stereotypeCreate"
+               style="@style/AppTheme.EditText"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="8dp"
+               android:layout_marginLeft="8dp"
+               android:inputType="text"
+               android:hint="@string/ed_settings_stereotypeCreate"
+               app:layout_constraintEnd_toStartOf="@+id/im_settings_stereotypeAdd"
+               app:layout_constraintHorizontal_bias="0.5"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <ImageView
+               android:id="@+id/im_settings_stereotypeAdd"
+               android:layout_width="@dimen/iconSizeDefault"
+               android:layout_height="@dimen/iconSizeDefault"
+               android:layout_marginTop="8dp"
+               android:layout_marginEnd="8dp"
+               android:layout_marginRight="8dp"
+               android:src="@drawable/ic_note_add"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="0.5"
+               app:layout_constraintStart_toEndOf="@+id/ed_settings_stereotypeCreate"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rView_cardStereotype"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="8dp"
+               android:layout_marginLeft="8dp"
+               android:layout_marginTop="8dp"
+               android:layout_marginEnd="8dp"
+               android:layout_marginRight="8dp"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/ed_settings_stereotypeCreate" />
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+       <View
+           android:layout_width="wrap_content"
+           android:layout_height="2dp"
+           android:background="@color/colorPrimary" />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="@dimen/marginSizeDefault"
+           android:layout_marginBottom="@dimen/marginSizeDefault"
+           android:orientation="vertical">
+
+           <TextView
+               android:id="@+id/tv_settings_clearPreferences"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="@dimen/marginSizeSmall"
+               android:layout_marginLeft="@dimen/marginSizeSmall"
+               android:text="@string/tv_settings_clearPreferences"
+               android:textSize="@dimen/textSubtitleSize" />
+
+       </LinearLayout>
+
+       <View
+           android:layout_width="wrap_content"
+           android:layout_height="2dp"
+           android:background="@color/colorPrimary" />
+
+   </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

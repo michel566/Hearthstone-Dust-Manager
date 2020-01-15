@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="transparent">#00000000</color>
     <color name="colorPrimary">#28d1e1</color>
     <color name="colorPrimaryDark">#177780</color>
     <color name="colorSecondary">#2EEEFF</color>
@@ -11,4 +12,15 @@
     <color name="colorTextLight">#787878</color>
     <color name="colorButton">#e8e8e8</color>
     <color name="colorButtonPressed">#cdcdcd</color>
+    <color name="colorShadow">#cdcdcd</color>
+    <color name="colorShadowDark">#333333</color>
+
+    <color name="colorBackgroundDark">#333333</color>
+    <color name="colorTextDark">#FFFFFF</color>
+    <color name="colorAccentDark">#29D6E6</color>
+
+    <color name="colorInfoDialog">#06a5ff</color>
+    <color name="colorAlertDialog">#ffcc00</color>
+    <color name="colorErrorDialog">#cf0000</color>
+
 </resources>
