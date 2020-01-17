@@ -2,6 +2,18 @@
 <resources>
 
     <string-array name="array_classes">
+        <item>Paladin</item>
+        <item>Druid</item>
+        <item>Hunter</item>
+        <item>Mage</item>
+        <item>Warrior</item>
+        <item>Priest</item>
+        <item>Warlock</item>
+        <item>Shaman</item>
+        <item>Rogue</item>
+    </string-array>
+
+    <string-array name="array_classesCardType">
         <item>Neutral</item>
         <item>Paladin</item>
         <item>Druid</item>

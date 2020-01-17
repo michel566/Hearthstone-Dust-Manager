@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -19,10 +19,22 @@
         <item name="android:background">@drawable/button</item>
     </style>
 
-    <style name="AppTheme.Spinner" parent="Widget.AppCompat.DropDownItem.Spinner">
+    <style name="AppTheme.Spinner" parent="Widget.AppCompat.Spinner.Underlined">
         <item name="android:textColor">@color/colorText</item>
-        <item name="android:background">@drawable/spinner</item>
         <item name="android:clickable">true</item>
+    </style>
+
+    <style name="AppTheme.Seekbar" parent="Widget.AppCompat.SeekBar">
+        <item name="android:progressBackgroundTint" tools:targetApi="lollipop">
+            @color/colorBackgroundDark
+        </item>
+        <item name="android:progressTint" tools:targetApi="lollipop">@color/colorPrimary</item>
+        <item name="android:colorControlActivated" tools:targetApi="lollipop">@color/colorAccent
+        </item>
+        <item name="android:max">10</item>
+        <item name="android:progress">5</item>
+        <item name="android:layout_marginTop">@dimen/marginSizeSmall</item>
+        <item name="android:layout_marginBottom">@dimen/marginSizeSmall</item>
     </style>
 
     <style name="AppTheme.FindEditText">
