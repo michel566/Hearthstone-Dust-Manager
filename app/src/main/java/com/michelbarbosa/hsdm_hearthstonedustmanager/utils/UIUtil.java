@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -122,13 +123,13 @@ public class UIUtil {
 
     }
 
-    public static void showToastListChanged(Context context, List<String> listAdapter, String flag){
+    public static void showToastListChanged(Context context, List<String> listAdapter, String flag) {
         StringBuilder text = new StringBuilder();
         text.append(flag).append("\n");
         int i = 0;
         String brokeLine = "\n - ";
-        for (String element: listAdapter) {
-            if(i != 0){
+        for (String element : listAdapter) {
+            if (i != 0) {
                 text.append(brokeLine).append(i).append(":").append(element);
             } else {
                 text.append(" - ").append(i).append(":").append(element);
@@ -136,7 +137,29 @@ public class UIUtil {
             i++;
         }
 
-        Toast.makeText(context, text , Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void setSeekBarOnTextView(final Context context, SeekBar seekBar,
+                                            final TextView textView, final int resourceString) {
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                textView.setText(Util.setFormatString(context, resourceString, i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
     }
 
 }

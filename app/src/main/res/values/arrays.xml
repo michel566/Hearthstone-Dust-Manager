@@ -33,4 +33,27 @@
         <item>Tempo</item>
     </string-array>
 
+    <string-array name="array_sets">
+        <item>Galakrond's Awakening</item>
+        <item>Descent of Dragons</item>
+        <item>Saviors of Uldum</item>
+        <item>Rise of Shadows</item>
+        <item>Rastakhan's Rumble</item>
+        <item>The Boomsday Project</item>
+        <item>The Witchwood</item>
+        <item>Kobolds and Catacombs</item>
+        <item>Knights of the Frozen Throne</item>
+        <item>Journey to Un'Goro</item>
+        <item>Mean Streets of Gadgetzan</item>
+        <item>One Night in Karazhan</item>
+        <item>Whispers of the Old Gods</item>
+        <item>The League of Explorers</item>
+        <item>The Grand Tournament</item>
+        <item>Blackrock Mountain</item>
+        <item>Goblins vs Gnomes</item>
+        <item>Curse of Naxxramas</item>
+        <item>Basic</item>
+        <item>Classic</item>
+    </string-array>
+
 </resources>

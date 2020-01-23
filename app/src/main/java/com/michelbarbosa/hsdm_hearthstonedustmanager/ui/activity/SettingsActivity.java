@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class SettingsActivity extends MainActivity {
 
     private StereotypeAdapter stereotypeAdapter;
     private static String[] defaultStereotypeList;
+    private static String[] defaultCollectionSet;
     private RecyclerView recyclerView;
     private static final String STATE_LIST = "state_list";
     static final String STEREOTYPE_KEY = "stereotype_key";
@@ -51,7 +53,7 @@ public class SettingsActivity extends MainActivity {
         setLayoutContent(R.layout.activity_settings);
         setToolbarTitle(R.string.title_settings);
         setViews();
-        defaultStereotypeList = getResources().getStringArray(R.array.array_stereotype);
+        setDefaultData();
 
         if (savedInstanceState != null) {
             stereotypeList = savedInstanceState.getStringArrayList(STATE_LIST);
@@ -121,6 +123,51 @@ public class SettingsActivity extends MainActivity {
                         });
             }
         });
+
+        setSeekBarViews();
+
+    }
+
+    private void setSeekBarViews() {
+        SeekBar seekClassicSet = findViewById(R.id.seek_classicSetWeight);
+        SeekBar seekStdLastSet = findViewById(R.id.seek_lastSetWeight);
+        SeekBar seekStdSecondLastSet = findViewById(R.id.seek_secondlastSetWeight);
+        SeekBar seekStdThirdLastSet = findViewById(R.id.seek_thirdlastSetWeight);
+        SeekBar seekStdFourthLastSet = findViewById(R.id.seek_fourthlastSetWeight);
+        SeekBar seekStdFifthLastSet = findViewById(R.id.seek_fifthlastSetWeight);
+        SeekBar seekStdSixthLastSet = findViewById(R.id.seek_sixthlastSetWeight);
+        SeekBar seekWildSet = findViewById(R.id.seek_WildSetWeight);
+        SeekBar seekBasicType = findViewById(R.id.seek_setBasicType);
+        SeekBar seekNeutralType = findViewById(R.id.seek_setNeutralType);
+        SeekBar seekClassType = findViewById(R.id.seek_setClassType);
+
+        TextView tvClassicSet = findViewById(R.id.tv_settings_setClassicSet);
+        UIUtil.setSeekBarOnTextView(this, seekClassicSet, tvClassicSet, R.string.tv_settings_setClassicSet);
+        TextView tvStdLastSet = findViewById(R.id.tv_settings_setLastSet);
+        UIUtil.setSeekBarOnTextView(this, seekStdLastSet, tvStdLastSet, R.string.tv_settings_setLastSet);
+        TextView tvStdSecondLastSet = findViewById(R.id.tv_settings_setSecondLastSet);
+        UIUtil.setSeekBarOnTextView(this, seekStdSecondLastSet, tvStdSecondLastSet, R.string.tv_settings_setSecondLastSet);
+        TextView tvStdThirdLastSet = findViewById(R.id.tv_settings_setThirdLastSet);
+        UIUtil.setSeekBarOnTextView(this, seekStdThirdLastSet, tvStdThirdLastSet, R.string.tv_settings_setThirdLastSet);
+        TextView tvStdFourthLastSet = findViewById(R.id.tv_settings_setFourthLastSet);
+        UIUtil.setSeekBarOnTextView(this, seekStdFourthLastSet, tvStdFourthLastSet, R.string.tv_settings_setFourthLastSet);
+        TextView tvStdFifthLastSet = findViewById(R.id.tv_settings_setFifthLastSet);
+        UIUtil.setSeekBarOnTextView(this, seekStdFifthLastSet, tvStdFifthLastSet, R.string.tv_settings_setFifthLastSet);
+        TextView tvStdSixthLastSet = findViewById(R.id.tv_settings_setSixthLastSet);
+        UIUtil.setSeekBarOnTextView(this, seekStdSixthLastSet, tvStdSixthLastSet, R.string.tv_settings_setSixthLastSet);
+        TextView tvWildSet = findViewById(R.id.tv_settings_setWildSet);
+        UIUtil.setSeekBarOnTextView(this, seekWildSet, tvWildSet, R.string.tv_settings_setWildSet);
+        TextView tvBasicType = findViewById(R.id.tv_settings_setBasicType);
+        UIUtil.setSeekBarOnTextView(this, seekBasicType, tvBasicType, R.string.tv_settings_setBasicType);
+        TextView tvNeutralType = findViewById(R.id.tv_settings_setNeutralType);
+        UIUtil.setSeekBarOnTextView(this, seekNeutralType, tvNeutralType, R.string.tv_settings_setNeutralType);
+        TextView tvClassType = findViewById(R.id.tv_settings_setClassType);
+        UIUtil.setSeekBarOnTextView(this, seekClassType, tvClassType, R.string.tv_settings_setClassType);
+    }
+
+    private void setDefaultData() {
+        defaultStereotypeList = getResources().getStringArray(R.array.array_stereotype);
+        defaultCollectionSet = getResources().getStringArray(R.array.array_sets);
     }
 
     private void setCreateStereotypeList() {

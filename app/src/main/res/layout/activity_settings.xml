@@ -7,13 +7,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/marginSizeDefault"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marginSizeDefault"
-            android:layout_marginBottom="@dimen/marginSizeDefault"
             android:orientation="vertical">
 
             <TextView
@@ -38,6 +37,8 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="2dp"
+            android:layout_marginTop="@dimen/marginSizeDefault"
+            android:layout_marginBottom="@dimen/marginSizeDefault"
             android:background="@color/colorPrimary" />
 
         <TextView
@@ -46,7 +47,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginSizeSmall"
             android:layout_marginLeft="@dimen/marginSizeSmall"
-            android:layout_marginTop="@dimen/marginSizeSmall"
             android:text="@string/tv_settings_preferences"
             android:textSize="@dimen/textSubtitleSize" />
 
@@ -104,18 +104,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginSizeSmall"
             android:layout_marginLeft="@dimen/marginSizeSmall"
-            android:layout_marginTop="@dimen/marginSizeDefault"
-            android:layout_marginBottom="@dimen/marginSizeDefault"
             android:orientation="vertical">
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/marginSizeSmall"
                 android:background="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/tv_settings_setWeight"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginSizeSmall"
                 android:layout_marginLeft="@dimen/marginSizeSmall"
@@ -127,7 +126,7 @@
 
             <TextView
                 android:id="@+id/tv_settings_setClassicSet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginSizeSmall"
                 android:layout_marginLeft="@dimen/marginSizeSmall"
@@ -139,11 +138,11 @@
                 android:id="@+id/seek_classicSetWeight"
                 style="@style/AppTheme.Seekbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/widgetSmallForm"/>
+                android:layout_height="@dimen/widgetSmallForm" />
 
             <TextView
                 android:id="@+id/tv_settings_setLastSet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginSizeSmall"
                 android:layout_marginLeft="@dimen/marginSizeSmall"
@@ -155,11 +154,11 @@
                 android:id="@+id/seek_lastSetWeight"
                 style="@style/AppTheme.Seekbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/widgetSmallForm"/>
+                android:layout_height="@dimen/widgetSmallForm" />
 
             <TextView
                 android:id="@+id/tv_settings_setSecondLastSet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginSizeSmall"
                 android:layout_marginLeft="@dimen/marginSizeSmall"
@@ -171,11 +170,11 @@
                 android:id="@+id/seek_secondlastSetWeight"
                 style="@style/AppTheme.Seekbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/widgetSmallForm"/>
+                android:layout_height="@dimen/widgetSmallForm" />
 
             <TextView
                 android:id="@+id/tv_settings_setThirdLastSet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginSizeSmall"
                 android:layout_marginLeft="@dimen/marginSizeSmall"
@@ -187,11 +186,11 @@
                 android:id="@+id/seek_thirdlastSetWeight"
                 style="@style/AppTheme.Seekbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/widgetSmallForm"/>
+                android:layout_height="@dimen/widgetSmallForm" />
 
             <TextView
                 android:id="@+id/tv_settings_setFourthLastSet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginSizeSmall"
                 android:layout_marginLeft="@dimen/marginSizeSmall"
@@ -203,11 +202,11 @@
                 android:id="@+id/seek_fourthlastSetWeight"
                 style="@style/AppTheme.Seekbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/widgetSmallForm"/>
+                android:layout_height="@dimen/widgetSmallForm" />
 
             <TextView
                 android:id="@+id/tv_settings_setFifthLastSet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginSizeSmall"
                 android:layout_marginLeft="@dimen/marginSizeSmall"
@@ -219,12 +218,12 @@
                 android:id="@+id/seek_fifthlastSetWeight"
                 style="@style/AppTheme.Seekbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/widgetSmallForm"/>
+                android:layout_height="@dimen/widgetSmallForm" />
 
 
             <TextView
                 android:id="@+id/tv_settings_setSixthLastSet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginSizeSmall"
                 android:layout_marginLeft="@dimen/marginSizeSmall"
@@ -236,11 +235,11 @@
                 android:id="@+id/seek_sixthlastSetWeight"
                 style="@style/AppTheme.Seekbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/widgetSmallForm"/>
+                android:layout_height="@dimen/widgetSmallForm" />
 
             <TextView
                 android:id="@+id/tv_settings_setWildSet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/marginSizeSmall"
                 android:layout_marginLeft="@dimen/marginSizeSmall"
@@ -252,19 +251,82 @@
                 android:id="@+id/seek_WildSetWeight"
                 style="@style/AppTheme.Seekbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/widgetSmallForm"/>
+                android:layout_height="@dimen/widgetSmallForm" />
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
+                android:layout_marginTop="@dimen/marginSizeDefault"
+                android:layout_marginBottom="@dimen/marginSizeSmall"
                 android:background="@color/colorPrimary" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tv_settings_cardTypeWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeDefault"
+                android:layout_marginBottom="@dimen/marginSizeDefault"
+                android:text="@string/tv_settings_typeCardWeight"
+                android:textSize="@dimen/textSizeDefault"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tv_settings_setBasicType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setBasicType"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_setBasicType"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setNeutralType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setNeutralType"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_setNeutralType"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setClassType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setClassType"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_setClassType"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+
+        </LinearLayout>
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="2dp"
+            android:layout_marginTop="@dimen/marginSizeDefault"
             android:background="@color/colorPrimary" />
 
         <LinearLayout

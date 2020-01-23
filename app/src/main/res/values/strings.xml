@@ -28,6 +28,7 @@
     <string name="tv_settings_clearPreferences">Restore default preferences</string>
     <string name="tv_settings_preferences">App Preferences</string>
     <string name="tv_settings_setWeight">Set Weight:</string>
+    <string name="tv_settings_typeCardWeight">Type Card Weight:</string>
 
     <string name="tv_settings_setClassicSet">Classic set  = <b>%d</b></string>
     <string name="tv_settings_setLastSet">Last Standard set = <b>%d</b></string>
@@ -37,10 +38,9 @@
     <string name="tv_settings_setFifthLastSet">Fifth to Last Standard set = <b>%d</b></string>
     <string name="tv_settings_setSixthLastSet">Sixth to Last Standard set = <b>%d</b></string>
     <string name="tv_settings_setWildSet">All Remaining Wild set  = <b>%d</b></string>
-
-    <string name="tv_settings_qualityWeight">Quality Weight</string>
-    <string name="tv_settings_cardTypeWeight">Card Type Weight</string>
-
+    <string name="tv_settings_setBasicType">Basic Type = <b>%d</b></string>
+    <string name="tv_settings_setNeutralType">Neutral Type  = <b>%d</b></string>
+    <string name="tv_settings_setClassType">Class Type  = <b>%d</b></string>
 
     <string name="msg_clearPreferences">Do you want restore all your settings preferences?</string>
 
