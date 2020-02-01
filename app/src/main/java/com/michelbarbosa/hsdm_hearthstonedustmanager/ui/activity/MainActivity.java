@@ -27,6 +27,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         if (item.getItemId() == R.id.action_settings) {
             gotoSettingsActivity(this);
             return true;
+        } else if (item.getItemId() == R.id.action_testes) {
+            gotoShowCardsActivity(this);
+            return true;
         } else {
             super.onOptionsItemSelected(item);
         }
