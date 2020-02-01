@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Hearthstone Dust Manager</string>
 
+    <string name="dialog_bt_ok">OK</string>
     <string name="dialog_bt_yes">Sure</string>
     <string name="dialog_bt_no">No</string>
 
@@ -43,6 +44,9 @@
     <string name="tv_settings_setClassType">Class Type  = <b>%d</b></string>
 
     <string name="msg_clearPreferences">Do you want restore all your settings preferences?</string>
+    <string name="msg_tooltip_appPreferences">Your preferences to set deck build and your priorities in arcane dust manager.</string>
+    <string name="msg_tooltip_setWeight">Defines the priority of creating each card by collection, managing in the game through arcane dust. Cards from newer collections tend to have higher priorities than older ones, as older ones tend to leave the standard block earlier.</string>
+    <string name="msg_tooltip_cardWeight">Define the priority by card type, basic cards are all those that every novice player receives until reaching level 20 with a hero class, so we advise that set = 1. Neutral cards with gray background can be used in all types of decks, therefore, your priority should be higher than colored background class cards that can only be used by specific classes.</string>
 
     <string name="ed_createdeck_name">Name of your deck</string>
 

@@ -34,24 +34,24 @@
     </string-array>
 
     <string-array name="array_sets">
-        <item>Galakrond's Awakening</item>
-        <item>Descent of Dragons</item>
-        <item>Saviors of Uldum</item>
-        <item>Rise of Shadows</item>
-        <item>Rastakhan's Rumble</item>
-        <item>The Boomsday Project</item>
-        <item>The Witchwood</item>
-        <item>Kobolds and Catacombs</item>
-        <item>Knights of the Frozen Throne</item>
-        <item>Journey to Un'Goro</item>
-        <item>Mean Streets of Gadgetzan</item>
-        <item>One Night in Karazhan</item>
-        <item>Whispers of the Old Gods</item>
-        <item>The League of Explorers</item>
-        <item>The Grand Tournament</item>
-        <item>Blackrock Mountain</item>
-        <item>Goblins vs Gnomes</item>
-        <item>Curse of Naxxramas</item>
+        <item>Galakrond s Awakening = %d</item>
+        <item>Descent of Dragons = %d</item>
+        <item>Saviors of Uldum = %d</item>
+        <item>Rise of Shadows = %d</item>
+        <item>Rastakhans Rumble = %d</item>
+        <item>The Boomsday Project = %d</item>
+        <item>The Witchwood = %d</item>
+        <item>Kobolds and Catacombs = %d</item>
+        <item>Knights of the Frozen Throne = %d</item>
+        <item>Journey to UnGoro = %d</item>
+        <item>Mean Streets of Gadgetzan = %d</item>
+        <item>One Night in Karazhan = %d</item>
+        <item>Whispers of the Old Gods = %d</item>
+        <item>The League of Explorers = %d</item>
+        <item>The Grand Tournament = %d</item>
+        <item>Blackrock Mountain = %d</item>
+        <item>Goblins vs Gnomes = %d</item>
+        <item>Curse of Naxxramas = %d</item>
         <item>Basic</item>
         <item>Classic</item>
     </string-array>
