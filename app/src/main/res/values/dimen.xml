@@ -5,6 +5,7 @@
     <dimen name="textSizeDefault">14sp</dimen>
 
     <dimen name="widgetDefaultForm">50dp</dimen>
+    <dimen name="widgetSmallForm">25dp</dimen>
     <dimen name="elevation_widget_default">2dp</dimen>
 
     <dimen name="marginSizeBig">32dp</dimen>
