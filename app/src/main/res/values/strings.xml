@@ -9,6 +9,7 @@
     <string name="action_tierStandardDecks">Standard Decks</string>
     <string name="action_tierWildDecks">Wild Decks</string>
     <string name="action_settings">Settings</string>
+    <string name="action_testes">Testes</string>
 
     <string name="title_yourDecks">Your Decks</string>
     <string name="title_settings">Settings</string>
@@ -16,6 +17,7 @@
     <string name="title_tierWildDecks">Tier Wild Decks</string>
     <string name="title_deckBuilder">Deck Builder</string>
     <string name="title_createDeck">New Deck</string>
+    <string name="title_testes">Teste</string>
 
     <string name="bt_yourdecks_importDeck">Import your deck code here</string>
     <string name="bt_yourdecks_createDeck">Create a new deck</string>
