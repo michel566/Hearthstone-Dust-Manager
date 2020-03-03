@@ -15,12 +15,14 @@ public class InfoResponse {
     private List<String> races;
     private List<String> locales;
 
-    public InfoResponse(String patch, List<String> classes, List<String> sets,
-                        List<String> types, List<String> factions, List<String> qualities,
-                        List<String> races, List<String> locales) {
+    public InfoResponse(String patch, List<String> classes, List<String> sets, List<String> standard,
+                        List<String> wild, List<String> types, List<String> factions,
+                        List<String> qualities, List<String> races, List<String> locales) {
         this.patch = patch;
         this.classes = classes;
         this.sets = sets;
+        this.standard = standard;
+        this.wild = wild;
         this.types = types;
         this.factions = factions;
         this.qualities = qualities;
@@ -38,6 +40,14 @@ public class InfoResponse {
 
     public List<String> getSets() {
         return sets;
+    }
+
+    public List<String> getStandard() {
+        return standard;
+    }
+
+    public List<String> getWild() {
+        return wild;
     }
 
     public List<String> getTypes() {

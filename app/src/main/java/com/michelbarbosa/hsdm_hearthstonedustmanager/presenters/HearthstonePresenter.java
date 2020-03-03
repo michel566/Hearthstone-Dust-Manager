@@ -18,10 +18,15 @@ import retrofit2.Response;
 
 public class HearthstonePresenter implements HearthstoneContracts.IHearthstonePresenter {
 
-    private HearthstoneContracts.presenterView view;
+    private HearthstoneContracts.presenterView.loadSingleCard singleCardview;
+    private HearthstoneContracts.presenterView.loadInfo loadInfoView;
 
-    public HearthstonePresenter(HearthstoneContracts.presenterView view) {
-        this.view = view;
+    public HearthstonePresenter(HearthstoneContracts.presenterView.loadSingleCard view) {
+        this.singleCardview = view;
+    }
+
+    public HearthstonePresenter(HearthstoneContracts.presenterView.loadInfo loadInfoView){
+        this.loadInfoView = loadInfoView;
     }
 
     @Override
@@ -34,14 +39,14 @@ public class HearthstonePresenter implements HearthstoneContracts.IHearthstonePr
             public void onResponse(Call<InfoResponse> call, Response<InfoResponse> response) {
                 progressDialog.dismiss();
                 if (response.body() != null) {
-                    view.successOnLoadInfo(response.body());
+                    loadInfoView.successOnLoadInfo(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<InfoResponse> call, Throwable t) {
                 progressDialog.dismiss();
-                view.failureOnLoadInfo("falha: " + t.getMessage());
+                loadInfoView.failureOnLoadInfo("falha: " + t.getMessage());
             }
         });
     }
@@ -58,19 +63,19 @@ public class HearthstonePresenter implements HearthstoneContracts.IHearthstonePr
                 if(response.isSuccessful()){
                     if(response.body() != null){
                         Log.d("RESPONSE ---> ", response.body().toString());
-                        view.successOnLoadSingleCard(response.body().get(0));
+                        singleCardview.successOnLoadSingleCard(response.body().get(0));
                     }else {
-                        view.failureOnLoadSingleCard("response.body() nulo");
+                        singleCardview.failureOnLoadSingleCard("response.body() nulo");
                     }
                 } else {
-                    view.failureOnLoadSingleCard("código: " + response.code());
+                    singleCardview.failureOnLoadSingleCard("código: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<List<SingleCardResponse>> call, Throwable t) {
                 progressDialog.dismiss();
-                view.failureOnLoadSingleCard("ocorreu algum problema: " + t.getMessage());
+                singleCardview.failureOnLoadSingleCard("ocorreu algum problema: " + t.getMessage());
             }
         });
 

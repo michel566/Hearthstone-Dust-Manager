@@ -8,11 +8,15 @@ import com.michelbarbosa.hsdm_hearthstonedustmanager.data.network.response.Singl
 public interface HearthstoneContracts {
 
     interface presenterView {
-        void successOnLoadSingleCard(SingleCardResponse response);
-        void failureOnLoadSingleCard(String messageFailure);
+        interface loadSingleCard extends presenterView{
+            void successOnLoadSingleCard(SingleCardResponse response);
+            void failureOnLoadSingleCard(String messageFailure);
+        }
 
-        void successOnLoadInfo(InfoResponse response);
-        void failureOnLoadInfo(String messageFailure);
+        interface loadInfo extends presenterView{
+            void successOnLoadInfo(InfoResponse response);
+            void failureOnLoadInfo(String messageFailure);
+        }
     }
 
     interface IHearthstonePresenter {

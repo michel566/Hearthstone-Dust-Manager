@@ -15,9 +15,10 @@ import com.michelbarbosa.hsdm_hearthstonedustmanager.presenters.HearthstonePrese
 import com.squareup.picasso.Picasso;
 
 //todo: remover após testes antes de colocar em produção
-public class ShowCardsActivity extends MainActivity implements HearthstoneContracts.presenterView {
+public class ShowCardsActivity extends MainActivity implements HearthstoneContracts.presenterView.loadSingleCard, HearthstoneContracts.presenterView.loadInfo {
 
-    protected HearthstoneContracts.IHearthstonePresenter presenter = new HearthstonePresenter(this);
+    protected HearthstoneContracts.IHearthstonePresenter singleCardPresenter = new HearthstonePresenter((loadSingleCard) this);
+    protected HearthstoneContracts.IHearthstonePresenter loadInfoPresenter = new HearthstonePresenter((loadInfo)this);
 
     private EditText edApi;
     private TextView tvResults;
@@ -38,8 +39,10 @@ public class ShowCardsActivity extends MainActivity implements HearthstoneContra
             public void onClick(View view) {
                 tvResults.setText("");
                 String input = edApi.getText().toString();
-                //   presenter.getSingleCard(ShowCardsActivity.this, input);
-                presenter.getInfo(ShowCardsActivity.this);
+
+                //Uncomment and comment to get a test each api
+                singleCardPresenter.getSingleCard(ShowCardsActivity.this, input);
+               // loadInfoPresenter.getInfo(ShowCardsActivity.this);
             }
         });
     }
