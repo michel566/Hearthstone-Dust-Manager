@@ -14,7 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.BuildConfig;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.data.network.response.InfoResponse;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.enums.DialogType;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.presenters.HearthstoneContracts;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.presenters.HearthstonePresenter;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.adapters.StereotypeAdapter;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.components.CustomDialog;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.interfaces.StereotypeRecyclerClickListener;
@@ -25,7 +28,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SettingsActivity extends MainActivity {
+public class SettingsActivity extends MainActivity implements HearthstoneContracts.presenterView.loadInfo  {
+
+    protected HearthstoneContracts.IHearthstonePresenter presenter = new HearthstonePresenter(this);
 
     private StereotypeAdapter stereotypeAdapter;
     private static String[] defaultStereotypeList;
@@ -59,9 +64,13 @@ public class SettingsActivity extends MainActivity {
         if (savedInstanceState != null) {
             stereotypeList = savedInstanceState.getStringArrayList(STATE_LIST);
         }
+
+        setSharedPreferences();
         setCreateStereotypeList();
+     //   presenter.getInfo(this);
         setTooltipDialogTextViewers();
     }
+
 
     @Override
     protected void onStop() {
@@ -77,6 +86,8 @@ public class SettingsActivity extends MainActivity {
 
     private void setDefaultData() {
         defaultStereotypeList = getResources().getStringArray(R.array.array_stereotype);
+
+        //carregar dados da api aqui
         defaultCollectionSet = getResources().getStringArray(R.array.array_sets);
     }
 
@@ -195,7 +206,6 @@ public class SettingsActivity extends MainActivity {
     }
 
     private void setCreateStereotypeList() {
-        setSharedPreferences();
         stereotypeList = new ArrayList<>();
         stereotypeList = SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0);
 
@@ -205,6 +215,35 @@ public class SettingsActivity extends MainActivity {
             setDefaultStereotypeList();
         }
         recyclerView.setAdapter(stereotypeAdapter);
+    }
+
+
+    @Override
+    public void successOnLoadInfo(InfoResponse response) {
+        List<String> updatedStandardSet = new ArrayList<>(response.getStandard());
+        updatedStandardSet = response.getStandard();
+        defaultCollectionSet = (String[]) updatedStandardSet.toArray();
+        SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref,
+                COLLECTION_KEY, 0, updatedStandardSet);
+    }
+
+    @Override
+    public void failureOnLoadInfo(String messageFailure) {
+        failedInUpdateData(this);
+/*
+        collectionList = new ArrayList<>();
+        collectionList = SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0);
+
+        if (collectionList.size() > 0) {
+            stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), listener, collectionList);
+        } else {
+            setDefaultStereotypeList();
+        }
+
+ */
+
+        //em caso de falha, somente carregar a lista do propio aplicativo do shared preferences
+        // defaultCollectionSet = getResources().getStringArray(R.array.array_sets);
     }
 
     private void setTooltipDialogTextViewers() {

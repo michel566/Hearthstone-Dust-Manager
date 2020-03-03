@@ -34,7 +34,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public SharedPreferences sharedPreferences;
     public SharedPreferences.Editor editorSharedPref;
-    public static final String STEREOTYPE_PREF = "stereotype_preferences";
+    public static final String PREFERENCES = "stereotype_preferences";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void setSharedPreferences() {
-        sharedPreferences = getSharedPreferences(STEREOTYPE_PREF, 0);
+        sharedPreferences = getSharedPreferences(PREFERENCES, 0);
         editorSharedPref = sharedPreferences.edit();
     }
 

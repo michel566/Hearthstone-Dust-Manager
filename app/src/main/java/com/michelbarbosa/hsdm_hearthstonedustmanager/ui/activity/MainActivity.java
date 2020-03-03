@@ -1,12 +1,16 @@
 package com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.enums.DialogType;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.components.CustomDialog;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -52,6 +56,19 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void failedInUpdateData(Context context){
+        final CustomDialog dialog = new CustomDialog(
+                context, getText(R.string.msg_failed_in_synchronize_data).toString(),
+                DialogType.ALERT, false);
+        dialog.show();
+        dialog.onOptionConfirmClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        }, getText(R.string.msg_failed_in_synchronize_data).toString());
     }
 
 }
