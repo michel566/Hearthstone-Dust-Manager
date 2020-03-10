@@ -9,7 +9,6 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -24,9 +23,11 @@ import androidx.core.content.ContextCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.enums.DialogType;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.components.CustomDialog;
 
 import java.util.List;
+import java.util.Locale;
 
 public class UIUtil {
 
@@ -118,17 +119,13 @@ public class UIUtil {
         return builder;
     }
 
-    public static void setSideNavigationOptionsSelected(MenuItem... itens) {
-
-    }
-
-    public static void showToastListChanged(Context context, List<String> listAdapter, String flag){
+    public static void showToastListChanged(Context context, List<String> listAdapter, String flag) {
         StringBuilder text = new StringBuilder();
         text.append(flag).append("\n");
         int i = 0;
         String brokeLine = "\n - ";
-        for (String element: listAdapter) {
-            if(i != 0){
+        for (String element : listAdapter) {
+            if (i != 0) {
                 text.append(brokeLine).append(i).append(":").append(element);
             } else {
                 text.append(" - ").append(i).append(":").append(element);
@@ -136,7 +133,40 @@ public class UIUtil {
             i++;
         }
 
-        Toast.makeText(context, text , Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void setTextViewWithValue(Context context, TextView textView,
+                                            int resourceValue, String text, int value) {
+        if (text == null) {
+            textView.setText(context.getResources().getString(resourceValue, value));
+        } else {
+            textView.setText(String.format(Locale.getDefault(), text, value));
+        }
+    }
+
+    public static void setTextViewToTooltipDialog(final Context context, final List<String> textsToDialog, List<TextView> textViewers) {
+        int index = 0;
+        for (final TextView tv : textViewers) {
+            final int finalIndex = index;
+            tv.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    final CustomDialog tooltipDialog = new CustomDialog(context,
+                            textsToDialog.get(finalIndex), DialogType.INFO, true);
+                    tooltipDialog.show();
+                    tooltipDialog.onOptionConfirmClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            tooltipDialog.dismiss();
+                        }
+                    }, context.getResources().getString(R.string.dialog_bt_ok));
+                    return true;
+                }
+            });
+            index++;
+        }
+
     }
 
 }

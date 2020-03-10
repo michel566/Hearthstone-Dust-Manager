@@ -24,16 +24,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.michelbarbosa.hsdm_hearthstonedustmanager.BuildConfig;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 
 
-public class BaseActivity extends AppCompatActivity{
+public class BaseActivity extends AppCompatActivity {
 
     protected Toolbar toolbar;
 
     public SharedPreferences sharedPreferences;
     public SharedPreferences.Editor editorSharedPref;
-    public static final String STEREOTYPE_PREF = "stereotype_preferences";
+    public static final String PREFERENCES = "stereotype_preferences";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,8 @@ public class BaseActivity extends AppCompatActivity{
         setContentView(R.layout.activity_base);
     }
 
-    protected void setSharedPreferences(){
-        sharedPreferences = getSharedPreferences(STEREOTYPE_PREF, 0);
+    protected void setSharedPreferences() {
+        sharedPreferences = getSharedPreferences(PREFERENCES, 0);
         editorSharedPref = sharedPreferences.edit();
     }
 
@@ -123,6 +124,13 @@ public class BaseActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_testes) {
+            if(!BuildConfig.DEBUG){
+                item.getActionView().setVisibility(View.GONE);
+            } else {
+                item.getActionView().setVisibility(View.VISIBLE);
+            }
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -176,6 +184,11 @@ public class BaseActivity extends AppCompatActivity{
 
     protected void gotoSettingsActivity(Context context) {
         Intent it = new Intent(context, SettingsActivity.class);
+        gotoActivity(it, context);
+    }
+
+    protected void gotoShowCardsActivity(Context context) {
+        Intent it = new Intent(context, ShowCardsActivity.class);
         gotoActivity(it, context);
     }
 

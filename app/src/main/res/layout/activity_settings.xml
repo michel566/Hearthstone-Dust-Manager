@@ -1,123 +1,357 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/marginSizeDefault"
+        android:orientation="vertical">
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="@dimen/marginSizeDefault"
-           android:layout_marginBottom="@dimen/marginSizeDefault"
-           android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="@dimen/marginSizeSmall"
-               android:layout_marginLeft="@dimen/marginSizeSmall"
-               android:text="@string/tv_settings_version"
-               android:textSize="@dimen/textSubtitleSize" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_version"
+                android:textSize="@dimen/textSubtitleSize" />
 
-           <TextView
-               android:id="@+id/tv_settings_VersionInfo"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="@dimen/marginSizeSmall"
-               android:layout_marginLeft="@dimen/marginSizeSmall"
-               android:text="@string/tv_settings_versionNumber"
-               android:textSize="@dimen/textSizeDefault" />
+            <TextView
+                android:id="@+id/tv_settings_VersionInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_versionNumber"
+                android:textSize="@dimen/textSizeDefault" />
 
-       </LinearLayout>
+        </LinearLayout>
 
-       <View
-           android:layout_width="wrap_content"
-           android:layout_height="2dp"
-           android:background="@color/colorPrimary" />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/marginSizeDefault"
+            android:layout_marginBottom="@dimen/marginSizeDefault"
+            android:background="@color/colorPrimary" />
 
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="@dimen/marginSizeDefault"
-           android:layout_marginBottom="@dimen/marginSizeDefault"
-           android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_settings_preferences"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginSizeSmall"
+            android:layout_marginLeft="@dimen/marginSizeSmall"
+            android:text="@string/tv_settings_preferences"
+            android:textSize="@dimen/textSubtitleSize" />
 
-           <EditText
-               android:id="@+id/ed_settings_stereotypeCreate"
-               style="@style/AppTheme.EditText"
-               android:layout_width="0dp"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="8dp"
-               android:layout_marginLeft="8dp"
-               android:inputType="text"
-               android:hint="@string/ed_settings_stereotypeCreate"
-               app:layout_constraintEnd_toStartOf="@+id/im_settings_stereotypeAdd"
-               app:layout_constraintHorizontal_bias="0.5"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginSizeDefault"
+            android:layout_marginBottom="@dimen/marginSizeDefault"
+            android:orientation="vertical">
 
-           <ImageView
-               android:id="@+id/im_settings_stereotypeAdd"
-               android:layout_width="@dimen/iconSizeDefault"
-               android:layout_height="@dimen/iconSizeDefault"
-               android:layout_marginTop="8dp"
-               android:layout_marginEnd="8dp"
-               android:layout_marginRight="8dp"
-               android:src="@drawable/ic_note_add"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintHorizontal_bias="0.5"
-               app:layout_constraintStart_toEndOf="@+id/ed_settings_stereotypeCreate"
-               app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/ed_settings_stereotypeCreate"
+                style="@style/AppTheme.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:hint="@string/ed_settings_stereotypeCreate"
+                android:inputType="text"
+                app:layout_constraintEnd_toStartOf="@+id/im_settings_stereotypeAdd"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/rView_cardStereotype"
-               android:layout_width="0dp"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="8dp"
-               android:layout_marginLeft="8dp"
-               android:layout_marginTop="8dp"
-               android:layout_marginEnd="8dp"
-               android:layout_marginRight="8dp"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/ed_settings_stereotypeCreate" />
+            <ImageView
+                android:id="@+id/im_settings_stereotypeAdd"
+                android:layout_width="@dimen/iconSizeDefault"
+                android:layout_height="@dimen/iconSizeDefault"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_note_add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ed_settings_stereotypeCreate"
+                app:layout_constraintTop_toTopOf="parent" />
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rView_cardStereotype"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_settings_stereotypeCreate" />
 
-       <View
-           android:layout_width="wrap_content"
-           android:layout_height="2dp"
-           android:background="@color/colorPrimary" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="@dimen/marginSizeDefault"
-           android:layout_marginBottom="@dimen/marginSizeDefault"
-           android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginSizeSmall"
+            android:layout_marginLeft="@dimen/marginSizeSmall"
+            android:orientation="vertical">
 
-           <TextView
-               android:id="@+id/tv_settings_clearPreferences"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="@dimen/marginSizeSmall"
-               android:layout_marginLeft="@dimen/marginSizeSmall"
-               android:text="@string/tv_settings_clearPreferences"
-               android:textSize="@dimen/textSubtitleSize" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/marginSizeSmall"
+                android:background="@color/colorPrimary" />
 
-       </LinearLayout>
+            <TextView
+                android:id="@+id/tv_settings_setWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeDefault"
+                android:layout_marginBottom="@dimen/marginSizeDefault"
+                android:text="@string/tv_settings_setWeight"
+                android:textSize="@dimen/textSizeDefault"
+                android:textStyle="bold" />
 
-       <View
-           android:layout_width="wrap_content"
-           android:layout_height="2dp"
-           android:background="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/tv_settings_setClassicSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setClassicSet"
+                android:textSize="@dimen/textSizeDefault" />
 
-   </LinearLayout>
+            <SeekBar
+                android:id="@+id/seek_classicSetWeight"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setLastSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setLastSet"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_lastSetWeight"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setSecondLastSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setSecondLastSet"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_secondlastSetWeight"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setThirdLastSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setThirdLastSet"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_thirdlastSetWeight"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setFourthLastSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setFourthLastSet"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_fourthlastSetWeight"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setFifthLastSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setFifthLastSet"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_fifthlastSetWeight"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+
+            <TextView
+                android:id="@+id/tv_settings_setSixthLastSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setSixthLastSet"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_sixthlastSetWeight"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setWildSet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setWildSet"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_WildSetWeight"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/marginSizeDefault"
+                android:layout_marginBottom="@dimen/marginSizeSmall"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_settings_cardTypeWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeDefault"
+                android:layout_marginBottom="@dimen/marginSizeDefault"
+                android:text="@string/tv_settings_typeCardWeight"
+                android:textSize="@dimen/textSizeDefault"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_settings_setBasicType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setBasicType"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_setBasicType"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setNeutralType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setNeutralType"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_setNeutralType"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+            <TextView
+                android:id="@+id/tv_settings_setClassType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:layout_marginTop="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_setClassType"
+                android:textSize="@dimen/textSizeDefault" />
+
+            <SeekBar
+                android:id="@+id/seek_setClassType"
+                style="@style/AppTheme.Seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widgetSmallForm" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/marginSizeDefault"
+            android:background="@color/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginSizeDefault"
+            android:layout_marginBottom="@dimen/marginSizeDefault"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_settings_clearPreferences"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginSizeSmall"
+                android:layout_marginLeft="@dimen/marginSizeSmall"
+                android:text="@string/tv_settings_clearPreferences"
+                android:textSize="@dimen/textSubtitleSize" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

@@ -64,21 +64,21 @@
                 android:id="@+id/bt_DialogConfirm"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:background="#33ffffff"
+                android:background="#99ffffff"
                 android:gravity="center"
                 android:layout_margin="@dimen/marginSizeDefault"
                 android:text="OK"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/bt_DialogEscape"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:background="#33ffffff"
+                android:background="#99ffffff"
                 android:gravity="center"
                 android:layout_margin="@dimen/marginSizeDefault"
                 android:text="SAIR"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </LinearLayout>
 
