@@ -2,6 +2,7 @@ package com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.BuildConfig;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
-import com.michelbarbosa.hsdm_hearthstonedustmanager.data.network.response.InfoResponse;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.data.domain.SetWeight;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.data.domain.TypeWeight;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.enums.CardType;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.enums.DialogType;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.presenters.HearthstoneContracts;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.presenters.HearthstonePresenter;
@@ -38,7 +41,8 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
     private RecyclerView recyclerView;
     private static final String STATE_LIST = "state_list";
     static final String STEREOTYPE_KEY = "stereotype_key";
-    static final String COLLECTION_KEY = "collection_key";
+    static final String SET_WEIGHT_KEY = "set_weight_key";
+    static final String TYPE_WEIGHT_KEY = "type_weight_key";
     private List<String> stereotypeList;
     private static int stereotypeCount = 0;
 
@@ -47,7 +51,7 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
         public void onClick(View v, int position) {
             stereotypeAdapter.removeStereotype(position);
             stereotypeList = stereotypeAdapter.getList();
-            SharedPreferencesUtil.removeStringToSharedPreferences(editorSharedPref, sharedPreferences,
+            SharedPreferencesUtil.removeToSharedPreferences(editorSharedPref, sharedPreferences,
                     STEREOTYPE_KEY, position, stereotypeList.size());
             restoreStereotypeListPref(stereotypeList);
         }
@@ -68,9 +72,25 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
         setSharedPreferences();
         setCreateStereotypeList();
      //   presenter.getInfo(this);
+
+      //  setTypeWeightList();
+        SharedPreferencesUtil.clearPreferences(sharedPreferences, editorSharedPref, TYPE_WEIGHT_KEY);
+
         setTooltipDialogTextViewers();
     }
 
+    private void setTypeWeightList(){
+        List<TypeWeight> list = new ArrayList<>();
+        list.add(new TypeWeight(0,CardType.BASIC, 0));
+        list.add(new TypeWeight(1,CardType.CLASS, 5));
+        list.add(new TypeWeight(2,CardType.NEUTRAL, 4));
+
+        SharedPreferencesUtil.setListTypeWeight(editorSharedPref, TYPE_WEIGHT_KEY, list);
+        SharedPreferencesUtil.removeToSharedPreferences(editorSharedPref, sharedPreferences,
+                TYPE_WEIGHT_KEY, 0, list.size());
+
+        testResponseTypeWeightList(SharedPreferencesUtil.getListTypeWeight(sharedPreferences, TYPE_WEIGHT_KEY));
+    }
 
     @Override
     protected void onStop() {
@@ -192,22 +212,16 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 UIUtil.setTextViewWithValue(SettingsActivity.this, textView, resourceValue, text, i);
             }
-
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
+            public void onStartTrackingTouch(SeekBar seekBar) {}
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
     }
 
     private void setCreateStereotypeList() {
         stereotypeList = new ArrayList<>();
-        stereotypeList = SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0);
+        stereotypeList = SharedPreferencesUtil.getList(sharedPreferences, STEREOTYPE_KEY, 0);
 
         if (stereotypeList.size() > 0) {
             stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), listener, stereotypeList);
@@ -217,22 +231,41 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
         recyclerView.setAdapter(stereotypeAdapter);
     }
 
-
     @Override
-    public void successOnLoadInfo(InfoResponse response) {
-        List<String> updatedStandardSet = new ArrayList<>(response.getStandard());
-        updatedStandardSet = response.getStandard();
-        defaultCollectionSet = (String[]) updatedStandardSet.toArray();
-        SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref,
-                COLLECTION_KEY, 0, updatedStandardSet);
+    public void successOnLoadInfo(List<SetWeight> setWeightList) {
+      //  SharedPreferencesUtil.setListSetWeight(editorSharedPref, SET_WEIGHT_KEY, setWeightList);
+     //   SharedPreferencesUtil.removeSetWeightToSharedPreferences(editorSharedPref, sharedPreferences, STATE_LIST, 8, setWeightList.size());
+
+    //    SharedPreferencesUtil.clearPreferences(sharedPreferences, editorSharedPref, SET_WEIGHT_KEY);
+
+
+        testResponseSetWeightList(SharedPreferencesUtil.getSetWeightList(sharedPreferences, SET_WEIGHT_KEY));
+    }
+
+    private void testResponseSetWeightList(List<SetWeight> setWeightList) {
+        Log.d("testResponseSets", "-----testResponseSets-----");
+        for (SetWeight item : setWeightList) {
+            Log.d("testResponseSets: ", "index: " + item.getIndex()
+                    + "|" + "set: " + item.getSet()
+                    + "|" + "weight: " + item.getWeight());
+        }
+    }
+
+    private void testResponseTypeWeightList(List<TypeWeight> setTypeWeight) {
+        Log.d("testResponseSets", "-----testResponseSets-----");
+        for (TypeWeight item : setTypeWeight) {
+            Log.d("testResponseSets: ", "type: " + item.getType()
+                    + "|" + "weight: " + item.getWeight());
+        }
     }
 
     @Override
     public void failureOnLoadInfo(String messageFailure) {
         failedInUpdateData(this);
+
 /*
         collectionList = new ArrayList<>();
-        collectionList = SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0);
+        collectionList = SharedPreferencesUtil.getList(sharedPreferences, STEREOTYPE_KEY, 0);
 
         if (collectionList.size() > 0) {
             stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), listener, collectionList);
@@ -244,6 +277,7 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
 
         //em caso de falha, somente carregar a lista do propio aplicativo do shared preferences
         // defaultCollectionSet = getResources().getStringArray(R.array.array_sets);
+
     }
 
     private void setTooltipDialogTextViewers() {
@@ -265,14 +299,14 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
 
     private void setDefaultStereotypeList() {
         stereotypeCount = defaultStereotypeList.length;
-        SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, 0,
+        SharedPreferencesUtil.setList(editorSharedPref, STEREOTYPE_KEY, 0,
                 new ArrayList<>(Arrays.asList(defaultStereotypeList)));
-    /*    SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, COLLECTION_KEY, 0,
+    /*    SharedPreferencesUtil.setList(editorSharedPref, SET_WEIGHT_KEY, 0,
                 new ArrayList<>(Arrays.asList(defaultCollectionSet)));
 
      */
         stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), listener,
-                SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0));
+                SharedPreferencesUtil.getList(sharedPreferences, STEREOTYPE_KEY, 0));
     }
 
     private void clearAllPreferences() {
@@ -286,7 +320,7 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
     }
 
     private void restoreStereotypeListPref(List<String> stereotypeList) {
-        SharedPreferencesUtil.setListToSharedPreferences(editorSharedPref, STEREOTYPE_KEY, 0, stereotypeList);
+        SharedPreferencesUtil.setList(editorSharedPref, STEREOTYPE_KEY, 0, stereotypeList);
         stereotypeAdapter.setList(stereotypeList);
     }
 

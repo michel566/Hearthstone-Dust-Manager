@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.SpinnerAdapter;
 
 import androidx.appcompat.widget.AppCompatSpinner;
 
@@ -33,7 +32,7 @@ public class CreateDeckActivity extends MainActivity {
 
         AppCompatSpinner spStereotype = findViewById(R.id.spPopup_createdeck_stereotype);
         setSharedPreferences();
-        List<String> list = SharedPreferencesUtil.getListToSharedPreferences(sharedPreferences, STEREOTYPE_KEY, 0);
+        List<String> list = SharedPreferencesUtil.getList(sharedPreferences, STEREOTYPE_KEY, 0);
         if(list.size() <= 0){
             ArrayAdapter<String> arrayAdapterStereotype = new ArrayAdapter<>(this,
                     android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.array_stereotype));

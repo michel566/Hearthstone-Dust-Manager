@@ -39,7 +39,7 @@ public class HearthstonePresenter implements HearthstoneContracts.IHearthstonePr
             public void onResponse(Call<InfoResponse> call, Response<InfoResponse> response) {
                 progressDialog.dismiss();
                 if (response.body() != null) {
-                    loadInfoView.successOnLoadInfo(response.body());
+                    loadInfoView.successOnLoadInfo(HearthstoneMapper.listSetWeightMapper(response.body()));
                 }
             }
 
@@ -80,7 +80,5 @@ public class HearthstonePresenter implements HearthstoneContracts.IHearthstonePr
         });
 
     }
-
-
 
 }
