@@ -2,8 +2,11 @@ package com.michelbarbosa.hsdm_hearthstonedustmanager.presenters;
 
 import android.content.Context;
 
+import com.michelbarbosa.hsdm_hearthstonedustmanager.data.domain.SetWeight;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.data.network.response.InfoResponse;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.data.network.response.SingleCardResponse;
+
+import java.util.List;
 
 public interface HearthstoneContracts {
 
@@ -14,14 +17,14 @@ public interface HearthstoneContracts {
         }
 
         interface loadInfo extends presenterView{
-            void successOnLoadInfo(InfoResponse response);
-            void failureOnLoadInfo(String messageFailure);
+            void successOnLoadStandardSet(List<SetWeight> setWeightList);
+            void failureOnStandardSet(String messageFailure);
         }
     }
 
     interface IHearthstonePresenter {
         void getSingleCard(Context context, String input);
-        void getInfo(Context context);
+        void getStandardSets(Context context);
     }
 
 }

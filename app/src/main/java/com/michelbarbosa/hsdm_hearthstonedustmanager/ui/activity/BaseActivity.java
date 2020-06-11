@@ -2,7 +2,6 @@ package com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,14 +26,9 @@ import androidx.fragment.app.FragmentTransaction;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.BuildConfig;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 
-
 public class BaseActivity extends AppCompatActivity {
 
     protected Toolbar toolbar;
-
-    public SharedPreferences sharedPreferences;
-    public SharedPreferences.Editor editorSharedPref;
-    public static final String PREFERENCES = "stereotype_preferences";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +37,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void setSharedPreferences() {
-        sharedPreferences = getSharedPreferences(PREFERENCES, 0);
-        editorSharedPref = sharedPreferences.edit();
+
     }
 
     public void setToolbar() {
@@ -146,7 +139,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void clearData() {
-        sharedPreferences.getAll().clear();
     }
 
     protected void destroyApplication(Context context) {
