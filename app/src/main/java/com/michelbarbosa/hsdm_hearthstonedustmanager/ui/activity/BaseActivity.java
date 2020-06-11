@@ -26,7 +26,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.BuildConfig;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity{
 
     protected Toolbar toolbar;
 
@@ -188,6 +188,5 @@ public class BaseActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         context.startActivity(intent);
     }
-
 
 }

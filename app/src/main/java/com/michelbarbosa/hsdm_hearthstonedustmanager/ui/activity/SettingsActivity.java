@@ -98,7 +98,11 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
         TextView tvClearPreferences = findViewById(R.id.tv_settings_clearPreferences);
         TextView tvVersionInfo = findViewById(R.id.tv_settings_VersionInfo);
 
-        tvVersionInfo.setText(BuildConfig.VERSION_NAME);
+        if (BuildConfig.DEBUG) {
+            tvVersionInfo.setText(BuildConfig.VERSION_NAME + " - debug");
+        } else {
+            tvVersionInfo.setText(BuildConfig.VERSION_NAME);
+        }
 
         recyclerView = findViewById(R.id.rView_cardStereotype);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

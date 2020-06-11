@@ -1,6 +1,9 @@
 package com.michelbarbosa.hsdm_hearthstonedustmanager.utils;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
+import android.util.Log;
 
 public class Util {
 
@@ -18,6 +21,19 @@ public class Util {
         else{
             return new String[]{fullText, ""};
         }
+    }
+
+    public static String getAppVersion(Context context) {
+        String result = "";
+        try {
+            result = context.getPackageManager()
+                    .getPackageInfo(context.getPackageName(), 0)
+                    .versionName;
+            result = result.replaceAll("[a-zA-Z]|-", "");
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(context.getPackageName(), e.getMessage());
+        }
+        return result;
     }
 
 }

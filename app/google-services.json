@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "375668415216",
+    "firebase_url": "https://hearthstone-dust-manager.firebaseio.com",
+    "project_id": "hearthstone-dust-manager",
+    "storage_bucket": "hearthstone-dust-manager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375668415216:android:041f8c2395f5c7abafc035",
+        "android_client_info": {
+          "package_name": "com.michelbarbosa.hsdm_hearthstonedustmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375668415216-98eubgn21c2eia814j0m0hrmdpblf4ru.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.michelbarbosa.hsdm_hearthstonedustmanager",
+            "certificate_hash": "951bb9d87a63427fa274f8b34c2fe2b57b75ff78"
+          }
+        },
+        {
+          "client_id": "375668415216-gofblttjckjd28mv484h6h9se89eke0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEoMJ6t9OeAFmv9WV89zQVofD3B1dPVUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375668415216-gofblttjckjd28mv484h6h9se89eke0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
