@@ -17,14 +17,14 @@ public interface HearthstoneContracts {
         }
 
         interface loadInfo extends presenterView{
-            void successOnLoadInfo(List<SetWeight> setWeightList);
-            void failureOnLoadInfo(String messageFailure);
+            void successOnLoadStandardSet(List<SetWeight> setWeightList);
+            void failureOnStandardSet(String messageFailure);
         }
     }
 
     interface IHearthstonePresenter {
         void getSingleCard(Context context, String input);
-        void getInfo(Context context);
+        void getStandardSets(Context context);
     }
 
 }

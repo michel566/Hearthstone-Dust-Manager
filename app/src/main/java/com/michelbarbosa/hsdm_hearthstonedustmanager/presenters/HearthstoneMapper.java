@@ -13,7 +13,7 @@ class HearthstoneMapper {
         int index = 0;
 
         for (String item: response.getStandard()) {
-            if((!item.equals("Basic"))){
+            if((!item.equals("Basic")) && !item.equals("Demon Hunter Initiate")){
                 setWeightList.add(new SetWeight(index++, item, 0));
             }
         }

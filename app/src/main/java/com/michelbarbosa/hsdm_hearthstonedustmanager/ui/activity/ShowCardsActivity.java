@@ -45,7 +45,7 @@ public class ShowCardsActivity extends MainActivity implements HearthstoneContra
 
                 //Uncomment and comment to get a test each api
                 singleCardPresenter.getSingleCard(ShowCardsActivity.this, input);
-               // loadInfoPresenter.getInfo(ShowCardsActivity.this);
+               // loadInfoPresenter.getStandardSets(ShowCardsActivity.this);
             }
         });
     }
@@ -84,7 +84,7 @@ public class ShowCardsActivity extends MainActivity implements HearthstoneContra
     }
 
     @Override
-    public void successOnLoadInfo(List<SetWeight> listSetWeight) {
+    public void successOnLoadStandardSet(List<SetWeight> listSetWeight) {
 
       /*  tvResults.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         tvResults.setText(response.getClasses().get(0));
@@ -93,7 +93,7 @@ public class ShowCardsActivity extends MainActivity implements HearthstoneContra
     }
 
     @Override
-    public void failureOnLoadInfo(String messageFailure) {
+    public void failureOnStandardSet(String messageFailure) {
         tvResults.setTextColor(getResources().getColor(R.color.colorErrorDialog));
         tvResults.setText(messageFailure);
     }

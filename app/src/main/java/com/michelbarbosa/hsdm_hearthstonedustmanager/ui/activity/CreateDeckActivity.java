@@ -2,17 +2,11 @@ package com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import androidx.appcompat.widget.AppCompatSpinner;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
-import com.michelbarbosa.hsdm_hearthstonedustmanager.utils.SharedPreferencesUtil;
-
-import java.util.List;
-
-import static com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity.SettingsActivity.STEREOTYPE_KEY;
 
 public class CreateDeckActivity extends MainActivity {
 
@@ -32,6 +26,7 @@ public class CreateDeckActivity extends MainActivity {
 
         AppCompatSpinner spStereotype = findViewById(R.id.spPopup_createdeck_stereotype);
         setSharedPreferences();
+        /*
         List<String> list = SharedPreferencesUtil.getList(sharedPreferences, STEREOTYPE_KEY, 0);
         if(list.size() <= 0){
             ArrayAdapter<String> arrayAdapterStereotype = new ArrayAdapter<>(this,
@@ -42,6 +37,8 @@ public class CreateDeckActivity extends MainActivity {
                     android.R.layout.simple_spinner_dropdown_item, list);
             spStereotype.setAdapter(arrayAdapterStereotype);
         }
+
+         */
 
     }
 
