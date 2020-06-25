@@ -25,7 +25,6 @@ public class CreateDeckActivity extends MainActivity {
         });
 
         AppCompatSpinner spStereotype = findViewById(R.id.spPopup_createdeck_stereotype);
-        setSharedPreferences();
         /*
         List<String> list = SharedPreferencesUtil.getList(sharedPreferences, STEREOTYPE_KEY, 0);
         if(list.size() <= 0){

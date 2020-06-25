@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.data.domain.Stereotype;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.interfaces.StereotypeRecyclerClickListener;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.ui.viewholders.StereotypeHolder;
 
@@ -17,10 +18,10 @@ public class StereotypeAdapter extends RecyclerView.Adapter<StereotypeHolder> {
 
     private final LayoutInflater layoutInflater;
     private final StereotypeRecyclerClickListener listener;
-    private List<String> stereotypeList;
+    private List<Stereotype> stereotypeList;
 
     public StereotypeAdapter(LayoutInflater layoutInflater,
-                             StereotypeRecyclerClickListener listener, List<String> stereotypeList) {
+                             StereotypeRecyclerClickListener listener, List<Stereotype> stereotypeList) {
         this.layoutInflater = layoutInflater;
         this.listener = listener;
         this.stereotypeList = stereotypeList;
@@ -34,7 +35,7 @@ public class StereotypeAdapter extends RecyclerView.Adapter<StereotypeHolder> {
 
     @Override
     public void onBindViewHolder(StereotypeHolder holder, int position) {
-        holder.bindItem(stereotypeList.get(position));
+        holder.bindItem(stereotypeList.get(position).getName());
     }
 
     @Override
@@ -42,7 +43,7 @@ public class StereotypeAdapter extends RecyclerView.Adapter<StereotypeHolder> {
         return stereotypeList != null ? stereotypeList.size() : 0;
     }
 
-    public void addStereotype(String stereotype){
+    public void addStereotype(Stereotype stereotype){
         stereotypeList.add(stereotype);
         notifyItemInserted(getItemCount());
     }
@@ -53,11 +54,11 @@ public class StereotypeAdapter extends RecyclerView.Adapter<StereotypeHolder> {
         notifyItemRangeChanged(position, stereotypeList.size());
     }
 
-    public ArrayList<String> getList(){
-        return (ArrayList<String>) stereotypeList;
+    public ArrayList<Stereotype> getList(){
+        return (ArrayList<Stereotype>) stereotypeList;
     }
 
-    public void setList(List<String> stereotypeList){
+    public void setList(List<Stereotype> stereotypeList){
         this.stereotypeList = stereotypeList;
         notifyDataSetChanged();
     }

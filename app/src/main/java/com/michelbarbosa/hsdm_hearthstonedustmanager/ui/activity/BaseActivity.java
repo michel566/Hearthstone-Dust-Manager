@@ -22,22 +22,22 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.BuildConfig;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.data.dao.stereotype.StereotypeViewModel;
 
 public class BaseActivity extends AppCompatActivity{
 
     protected Toolbar toolbar;
+    protected StereotypeViewModel stereotypeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-    }
-
-    protected void setSharedPreferences() {
-
+        stereotypeViewModel = new ViewModelProvider(BaseActivity.this).get(StereotypeViewModel.class);
     }
 
     public void setToolbar() {

@@ -8,8 +8,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import com.michelbarbosa.hsdm_hearthstonedustmanager.BuildConfig;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.callbacks.SetValueWeight;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.data.domain.SetWeight;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.data.domain.Stereotype;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.data.domain.TypeWeight;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.enums.CardType;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.enums.DialogType;
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SettingsActivity extends MainActivity implements HearthstoneContracts.presenterView.loadInfo, SetValueWeight{
+public class SettingsActivity extends MainActivity implements HearthstoneContracts.presenterView.loadInfo, SetValueWeight {
 
     protected HearthstoneContracts.IHearthstonePresenter presenter = new HearthstonePresenter(this);
 
@@ -39,53 +41,28 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
     private static String[] defaultStereotypeList;
     private static List<SetWeight> setWeightList;
     private static List<TypeWeight> typeWeightList;
-    private RecyclerView recyclerView;
     private SetValueWeight setValueWeight;
-    private List<String> stereotypeList;
-    private static int stereotypeCount = 0;
-
-    StereotypeRecyclerClickListener listener = new StereotypeRecyclerClickListener() {
-        @Override
-        public void onClick(View v, int position) {
-            stereotypeAdapter.removeStereotype(position);
-            stereotypeList = stereotypeAdapter.getList();
-            restoreStereotypeListPref(stereotypeList);
-        }
-    };
+    private List<Stereotype> stereotypeList;
+    private static int countStereotype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLayoutContent(R.layout.activity_settings);
         setToolbarTitle(R.string.title_settings);
+        presenter.getStandardSets(this);
         setDefaultData();
         setViews();
-
-        setSharedPreferences();
-        setCreateStereotypeList();
-        presenter.getStandardSets(this);
-
-        setTypeWeightList();
-        setTooltipDialogTextViewers();
-    }
-
-    private void setTypeWeightList() {
-        List<TypeWeight> list = new ArrayList<>();
-        list.add(new TypeWeight(0, CardType.BASIC, 0));
-        list.add(new TypeWeight(1, CardType.CLASS, 5));
-        list.add(new TypeWeight(2, CardType.NEUTRAL, 4));
-
+        loadDefaultData();
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        stereotypeCount = 0;
+    public void successOnLoadStandardSet(List<SetWeight> setWeightList) {
     }
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
+    public void failureOnStandardSet(String messageFailure) {
+        failedInUpdateData(this);
     }
 
     private void setDefaultData() {
@@ -104,21 +81,9 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
             tvVersionInfo.setText(BuildConfig.VERSION_NAME);
         }
 
-        recyclerView = findViewById(R.id.rView_cardStereotype);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        UIUtil.iconFillColor(this, ivAddStereotype, R.drawable.ic_note_add, R.color.colorPrimary);
-        ivAddStereotype.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String stereotype = edCreateStereotype.getText().toString();
-                if (!TextUtils.isEmpty(stereotype)) {
-                    edCreateStereotype.clearComposingText();
-                    stereotypeCount = stereotypeAdapter.getList().size();
-                    stereotypeAdapter.addStereotype(stereotype);
-                }
-            }
-        });
+        stereotypeListenerSetup(edCreateStereotype, ivAddStereotype);
+        observerStereotypeData();
+        stereotypeRecyclerSetup();
 
         tvClearPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,7 +97,7 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
                             @Override
                             public void onClick(View v) {
                                 dialog.dismiss();
-                                clearAllPreferences();
+                                clearAllStereotype();
                                 restoreAllPreferences();
                             }
                         }, getResources().getString(R.string.dialog_bt_no),
@@ -146,6 +111,58 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
         });
 
         setSeekBarViews();
+        setTypeWeightList();
+        setTooltipDialogTextViewers();
+    }
+
+    private void stereotypeListenerSetup(final EditText editText, ImageView imageView) {
+        UIUtil.iconFillColor(this, imageView, R.drawable.ic_note_add, R.color.colorPrimary);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String stereotypeName = editText.getText().toString();
+                if (!TextUtils.isEmpty(stereotypeName)) {
+                    stereotypeViewModel.insert(stereotypeName);
+                    editText.clearComposingText();
+                    editText.setText("");
+                    stereotypeAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+    }
+
+    private StereotypeRecyclerClickListener onClickRemoveStereotypeListener() {
+        return new StereotypeRecyclerClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                stereotypeViewModel.deleteFromName(stereotypeAdapter.getList().get(position).getName());
+                stereotypeAdapter.removeStereotype(position);
+                stereotypeList = stereotypeAdapter.getList();
+            }
+        };
+    }
+
+    private void observerStereotypeData() {
+        stereotypeViewModel.getAllData().observe(this, new Observer<List<Stereotype>>() {
+            @Override
+            public void onChanged(List<Stereotype> stereotypeList) {
+                restoreStereotypeListPref(stereotypeList);
+            }
+        });
+
+        stereotypeViewModel.getResult().observe(this, new Observer<List<Stereotype>>() {
+            @Override
+            public void onChanged(List<Stereotype> stereotypeList) {
+                restoreStereotypeListPref(stereotypeList);
+            }
+        });
+    }
+
+    private void stereotypeRecyclerSetup() {
+        RecyclerView recyclerViewStereotype = findViewById(R.id.rView_cardStereotype);
+        stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), onClickRemoveStereotypeListener(), stereotypeList);
+        recyclerViewStereotype.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewStereotype.setAdapter(stereotypeAdapter);
     }
 
     private void setSeekBarViews() {
@@ -175,7 +192,7 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
     }
 
     private void trackValue(final SeekBar seekBar, final TextView textView,
-                               final int resourceValue, final SetWeight setWeight){
+                            final int resourceValue, final SetWeight setWeight) {
         seekBar.setProgress(setWeight.getWeight());
         UIUtil.setTextViewWithValue(SettingsActivity.this, textView, resourceValue, setWeight.getSet(), setWeight.getWeight());
 
@@ -198,7 +215,7 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
     }
 
     private void trackValue(final SeekBar seekBar, final TextView textView,
-                               final int resourceValue, final TypeWeight typeWeight){
+                            final int resourceValue, final TypeWeight typeWeight) {
         seekBar.setProgress(typeWeight.getWeight());
         UIUtil.setTextViewWithValue(SettingsActivity.this, textView, resourceValue, typeWeight.getType().toString(), typeWeight.getWeight());
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -227,41 +244,11 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
     public void callbackValueSpinnerSelect(TypeWeight typeWeight) {
     }
 
-
-    private void setCreateStereotypeList() {
-        stereotypeList = new ArrayList<>();
-        if (stereotypeList.size() > 0) {
-            setDefaultStereotypeList();
-        } else {
-            stereotypeAdapter = new StereotypeAdapter(getLayoutInflater(), listener, stereotypeList);
-        }
-        recyclerView.setAdapter(stereotypeAdapter);
-    }
-
-    @Override
-    public void successOnLoadStandardSet(List<SetWeight> setWeightList) {
-    }
-
-    private void testResponseSetWeightList(List<SetWeight> setWeightList) {
-        Log.d("testResponseSets", "-----testResponseSets-----");
-        for (SetWeight item : setWeightList) {
-            Log.d("testResponseSets: ", "index: " + item.getIndex()
-                    + "|" + "set: " + item.getSet()
-                    + "|" + "weight: " + item.getWeight());
-        }
-    }
-
-    private void testResponseTypeWeightList(List<TypeWeight> setTypeWeight) {
-        Log.d("testResponseSets", "-----testResponseSets-----");
-        for (TypeWeight item : setTypeWeight) {
-            Log.d("testResponseSets: ", "type: " + item.getType()
-                    + "|" + "weight: " + item.getWeight());
-        }
-    }
-
-    @Override
-    public void failureOnStandardSet(String messageFailure) {
-        failedInUpdateData(this);
+    private void setTypeWeightList() {
+        List<TypeWeight> list = new ArrayList<>();
+        list.add(new TypeWeight(0, CardType.BASIC, 0));
+        list.add(new TypeWeight(1, CardType.CLASS, 5));
+        list.add(new TypeWeight(2, CardType.NEUTRAL, 4));
     }
 
     private void setTooltipDialogTextViewers() {
@@ -281,20 +268,56 @@ public class SettingsActivity extends MainActivity implements HearthstoneContrac
         UIUtil.setTextViewToTooltipDialog(SettingsActivity.this, staticTooltipTextList, textViews);
     }
 
-    private void setDefaultStereotypeList() {
-        stereotypeCount = defaultStereotypeList.length;
+    private void testResponseSetWeightList(List<SetWeight> setWeightList) {
+        Log.d("testResponseSets", "-----testResponseSets-----");
+        for (SetWeight item : setWeightList) {
+            Log.d("testResponseSets: ", "index: " + item.getIndex()
+                    + "|" + "set: " + item.getSet()
+                    + "|" + "weight: " + item.getWeight());
+        }
     }
 
-    private void clearAllPreferences() {
-        stereotypeAdapter.removeAllStereotypes();
+    private void testResponseTypeWeightList(List<TypeWeight> setTypeWeight) {
+        Log.d("testResponseSets", "-----testResponseSets-----");
+        for (TypeWeight item : setTypeWeight) {
+            Log.d("testResponseSets: ", "type: " + item.getType()
+                    + "|" + "weight: " + item.getWeight());
+        }
+    }
+
+    private void loadDefaultData() {
+        insertDefaultStereotypes();
     }
 
     private void restoreAllPreferences() {
-        restoreStereotypeListPref(new ArrayList<>(Arrays.asList(defaultStereotypeList)));
+        insertDefaultStereotypes();
     }
 
-    private void restoreStereotypeListPref(List<String> stereotypeList) {
+    private void insertDefaultStereotypes(){
+        stereotypeViewModel.insertSetDefaultValues(defaultStereotypeList);
+        restoreStereotypeListPref(getDefaultStereotype(defaultStereotypeList));
+    }
+
+    private List<Stereotype> getDefaultStereotype(String[] defaultList) {
+        List<String> stereotypeNames = new ArrayList<>(Arrays.asList(defaultList));
+        List<Stereotype> stereotypeList = new ArrayList<>();
+        int i = 0;
+        for (String item : stereotypeNames) {
+            stereotypeList.add(new Stereotype(i, item));
+            i++;
+        }
+        return stereotypeList;
+    }
+
+    private void clearAllStereotype(){
+        stereotypeAdapter.removeAllStereotypes();
+        stereotypeViewModel.wipe();
+        stereotypeAdapter.notifyDataSetChanged();
+    }
+
+    private void restoreStereotypeListPref(List<Stereotype> stereotypeList) {
         stereotypeAdapter.setList(stereotypeList);
+        stereotypeAdapter.notifyDataSetChanged();
     }
 
 }
