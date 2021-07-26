@@ -2,7 +2,6 @@ package com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,28 +22,22 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.BuildConfig;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
+import com.michelbarbosa.hsdm_hearthstonedustmanager.data.dao.stereotype.StereotypeViewModel;
 
-
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity{
 
     protected Toolbar toolbar;
-
-    public SharedPreferences sharedPreferences;
-    public SharedPreferences.Editor editorSharedPref;
-    public static final String PREFERENCES = "stereotype_preferences";
+    protected StereotypeViewModel stereotypeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-    }
-
-    protected void setSharedPreferences() {
-        sharedPreferences = getSharedPreferences(PREFERENCES, 0);
-        editorSharedPref = sharedPreferences.edit();
+        stereotypeViewModel = new ViewModelProvider(BaseActivity.this).get(StereotypeViewModel.class);
     }
 
     public void setToolbar() {
@@ -146,7 +139,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void clearData() {
-        sharedPreferences.getAll().clear();
     }
 
     protected void destroyApplication(Context context) {
@@ -196,6 +188,5 @@ public class BaseActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         context.startActivity(intent);
     }
-
 
 }

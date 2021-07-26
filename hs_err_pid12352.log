@@ -15,7 +15,7 @@
 #   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
 #     placed in the first 4GB address space. The Java Heap base address is the
 #     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
-#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+#     to nameSet the Java Heap base and to place the Java Heap above 4GB virtual address.
 # This output file may be truncated or incomplete.
 #
 #  Out of Memory Error (allocation.cpp:389), pid=12352, tid=0x0000000000001834

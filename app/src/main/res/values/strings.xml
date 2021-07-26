@@ -59,4 +59,5 @@
     <string name="ed_deckbuilder_findByName">find your card by name</string>
     <string name="ed_settings_stereotypeCreate">Create a stereotype</string>
 
+    <string name="url_updatePlayStore">https://play.google.com/store/apps/details?id=com.michelbarbosa.hsdm_hearthstonedustmanager</string>
 </resources>
