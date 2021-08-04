@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textTitleSize">20sp</dimen>
+    <dimen name="textSubtitleSize">18sp</dimen>
+    <dimen name="textSizeDefault">14sp</dimen>
+
+    <dimen name="widgetDefaultForm">50dp</dimen>
+    <dimen name="widgetSmallForm">25dp</dimen>
+    <dimen name="elevation_widget_default">2dp</dimen>
+
+    <dimen name="marginSizeBig">32dp</dimen>
+    <dimen name="marginSizeDefault">16dp</dimen>
+    <dimen name="marginSizeSmall">8dp</dimen>
+    <dimen name="marginCard">4dp</dimen>
+
+    <dimen name="iconSizeDefaultSmall">20dp</dimen>
+    <dimen name="iconSizeDefault">30dp</dimen>
+    <dimen name="iconSizeDefaultBig">50dp</dimen>
+
+</resources>
