@@ -1,6 +1,7 @@
 package com.michelbarbosa.hsdm_hearthstonedustmanager.ui.activity;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +18,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setToolbar();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            setToolbar();
+        }
         setBottomNavigationView();
     }
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_classes">
+        <item>Paladin</item>
+        <item>Druid</item>
+        <item>Hunter</item>
+        <item>Mage</item>
+        <item>Warrior</item>
+        <item>Priest</item>
+        <item>Warlock</item>
+        <item>Shaman</item>
+        <item>Rogue</item>
+    </string-array>
+
+    <string-array name="array_classesCardType">
+        <item>Neutral</item>
+        <item>Paladin</item>
+        <item>Druid</item>
+        <item>Hunter</item>
+        <item>Mage</item>
+        <item>Warrior</item>
+        <item>Priest</item>
+        <item>Warlock</item>
+        <item>Shaman</item>
+        <item>Rogue</item>
+    </string-array>
+
+    <string-array name="array_stereotype">
+        <item>Aggro</item>
+        <item>Midrange</item>
+        <item>Control</item>
+        <item>Tempo</item>
+    </string-array>
+
+    <string-array name="array_sets">
+        <item>Galakrond s Awakening = %d</item>
+        <item>Descent of Dragons = %d</item>
+        <item>Saviors of Uldum = %d</item>
+        <item>Rise of Shadows = %d</item>
+        <item>Rastakhans Rumble = %d</item>
+        <item>The Boomsday Project = %d</item>
+        <item>The Witchwood = %d</item>
+        <item>Kobolds and Catacombs = %d</item>
+        <item>Knights of the Frozen Throne = %d</item>
+        <item>Journey to UnGoro = %d</item>
+        <item>Mean Streets of Gadgetzan = %d</item>
+        <item>One Night in Karazhan = %d</item>
+        <item>Whispers of the Old Gods = %d</item>
+        <item>The League of Explorers = %d</item>
+        <item>The Grand Tournament = %d</item>
+        <item>Blackrock Mountain = %d</item>
+        <item>Goblins vs Gnomes = %d</item>
+        <item>Curse of Naxxramas = %d</item>
+        <item>Basic</item>
+        <item>Classic</item>
+    </string-array>
+
+</resources>

@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.michelbarbosa.hsdm_hearthstonedustmanager.R;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.data.domain.SetWeight;
-import com.michelbarbosa.hsdm_hearthstonedustmanager.data.network.response.InfoResponse;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.data.network.response.SingleCardResponse;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.presenters.HearthstoneContracts;
 import com.michelbarbosa.hsdm_hearthstonedustmanager.presenters.HearthstonePresenter;

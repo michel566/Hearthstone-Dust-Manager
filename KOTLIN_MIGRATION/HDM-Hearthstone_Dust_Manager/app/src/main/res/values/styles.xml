@@ -1,0 +1,70 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Button">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/button</item>
+    </style>
+
+    <style name="AppTheme.Spinner" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="AppTheme.Seekbar" parent="Widget.AppCompat.SeekBar">
+        <item name="android:progressBackgroundTint" tools:targetApi="lollipop">
+            @color/colorBackgroundDark
+        </item>
+        <item name="android:progressTint" tools:targetApi="lollipop">@color/colorPrimary</item>
+        <item name="android:colorControlActivated" tools:targetApi="lollipop">@color/colorAccent
+        </item>
+        <item name="android:max">10</item>
+        <item name="android:progress">5</item>
+        <item name="android:layout_marginTop">@dimen/marginSizeSmall</item>
+        <item name="android:layout_marginBottom">@dimen/marginSizeSmall</item>
+    </style>
+
+    <style name="AppTheme.FindEditText">
+        <item name="android:background">@drawable/edit_text</item>
+        <item name="android:textColor">@color/colorTextLight</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:drawableEnd">@drawable/ic_search</item>
+    </style>
+
+    <style name="AppTheme.EditText">
+        <item name="android:background">@drawable/edit_text</item>
+        <item name="android:textColor">@color/colorTextLight</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="CustomToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">@dimen/textTitleSize</item>
+    </style>
+
+    <!-- Menu app theme. -->
+    <style name="CustomPopupStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/colorBackground</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">@dimen/textSizeDefault</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>
